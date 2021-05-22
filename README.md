@@ -4,4 +4,9 @@
 
 <ul>
     <li>Выполнить git clone</li>
+    <li>Выполнить команду <b>composer install</b></li>
+    <li>Выполнить команду <b>npm install</b></li>
+    <li>Выполнить команду <b>npm run dev</b></li>
+    <li>Выполнить команду <b>npm run watch</b></li>
+    <li>Выполнить команду <b>php artisan serve</b></li>
 </ul>
