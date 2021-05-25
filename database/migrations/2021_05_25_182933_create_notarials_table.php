@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrganiMinustsTable extends Migration
+class CreateNotarialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateOrganiMinustsTable extends Migration
      */
     public function up()
     {
-        Schema::create('organi_minusts', function (Blueprint $table) {
-            $table->integer('idOrgana');
-            $table->string('otdel')->nullable();
+        Schema::create('notarials', function (Blueprint $table) {
+            $table->integer('idNotarial');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateOrganiMinustsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('organi_minusts');
+        Schema::dropIfExists('notarials');
     }
 }

@@ -1,11 +1,11 @@
 <?php
-
+//Обращения пользователей
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ObracheniasController extends Controller
+class ReferencesController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -4,12 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\UsersController;
 use App\Http\Controllers\Api\v1\NotarialController;
-use App\Http\Controllers\Api\v1\ObracheniasController;
-use App\Http\Controllers\Api\v1\OrganiMinustController;
+use App\Http\Controllers\Api\v1\ReferencesController;
+use App\Http\Controllers\Api\v1\JusticeController;
 use App\Http\Controllers\Api\v1\PodrazdelController;
-use App\Http\Controllers\Api\v1\PrinyatieMerController;
+use App\Http\Controllers\Api\v1\MeasuresController;
 use App\Http\Controllers\Api\v1\TerritorialController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,8 +26,8 @@ use App\Http\Controllers\Api\v1\TerritorialController;
 
 Route::resource('user', UsersController::class);
 Route::resource('notarial', NotarialController::class);
-Route::resource('obrachenia', ObracheniasController::class);
-Route::resource('organiMinust', OrganiMinustController::class);
+Route::resource('references', ReferencesController::class);
+Route::resource('justice', JusticeController::class);
 Route::resource('podrazdel', PodrazdelController::class);
-Route::resource('prinyatieMer', PrinyatieMerController::class);
-Route::resource('territorialOrgan', TerritorialController::class);
+Route::resource('measures', MeasuresController::class);
+Route::resource('territorial', TerritorialController::class);

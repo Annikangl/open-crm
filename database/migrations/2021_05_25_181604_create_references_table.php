@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateObracheniasTable extends Migration
+class CreateReferencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateObracheniasTable extends Migration
      */
     public function up()
     {
-        Schema::create('obrachenias', function (Blueprint $table) {
+        Schema::create('references', function (Blueprint $table) {
             $table->id();
             $table->integer('idUser')->nullable();
             $table->text('FIO')->nullable();
@@ -32,6 +32,6 @@ class CreateObracheniasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('obrachenias');
+        Schema::dropIfExists('references');
     }
 }

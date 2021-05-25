@@ -1,11 +1,14 @@
 <?php
-
+//органы Минюста
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Models\justice;
+use Dotenv\Parser\Value;
 use Illuminate\Http\Request;
+use Validator;
 
-class PrinyatieMerController extends Controller
+class JusticeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,7 @@ class PrinyatieMerController extends Controller
      */
     public function index()
     {
-        //
+        return justice::all();
     }
 
     /**
@@ -35,8 +38,27 @@ class PrinyatieMerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatior = Validator::make(
+            $request->all(),
+            [
+                "otdel"=>["required"]
+            ]);
+
+            if ($validatior->fails()) {
+                return [
+                    "status"=>false,
+                    "errors"=>$validatior->messages()
+                ];
+            }
+            $post= justice::create([
+                "otdel" => $request->otdel
+            ]);
+            return[
+                "status" => true,
+                "post"=> $post
+            ];
     }
+    
 
     /**
      * Display the specified resource.

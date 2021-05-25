@@ -1,11 +1,9 @@
 <?php
-
+//Нотариальные конторы
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\notarialContora;
 use Illuminate\Http\Request;
-use Validator;
 
 class NotarialController extends Controller
 {
@@ -17,7 +15,6 @@ class NotarialController extends Controller
     public function index()
     {
         //
-        return notarialContora::all();
     }
 
     /**
@@ -38,27 +35,7 @@ class NotarialController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                "contora"=>["required"]
-            ]
-        );
-        if ($validator->fails()) {
-            return [
-                "status"=> false,
-                "errors"=> $validator->messages()
-            ];
-        }
-
-        $notarial = notarialContora::create([
-            "contora"=>$request->contora
-        ]);
-
-        return [
-            "status"=>true,
-            "notarial"=>$notarial
-        ];
+        //
     }
 
     /**

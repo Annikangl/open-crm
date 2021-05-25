@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotarialContorasTable extends Migration
+class CreateTerritorialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateNotarialContorasTable extends Migration
      */
     public function up()
     {
-        Schema::create('notarial_contoras', function (Blueprint $table) {
-            $table->integer('idNotarial');
-            $table->string('contora')->nullable();
+        Schema::create('territorials', function (Blueprint $table) {
+            $table->integer('idTerritor');
+            $table->string('gorod')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateNotarialContorasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notarial_contoras');
+        Schema::dropIfExists('territorials');
     }
 }
