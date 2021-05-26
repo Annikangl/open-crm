@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Models\territorial;
 use Illuminate\Http\Request;
+use Validator;
 
 class TerritorialController extends Controller
 {
@@ -14,7 +16,7 @@ class TerritorialController extends Controller
      */
     public function index()
     {
-        //
+        return territorial::all();
     }
 
     /**
@@ -35,7 +37,27 @@ class TerritorialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatior = Validator::make(
+            $request->all(),
+            [
+                "gorod"=>["required"],
+                "structura"=>["required"]
+            ]);
+
+            if ($validatior->fails()) {
+                return [
+                    "status"=>false,
+                    "errors"=>$validatior->messages()
+                ];
+            }
+            $post= territorial::create([
+                "gorod" => $request->gorod,
+                "structura" => $request->structura
+            ]);
+            return[
+                "status" => true,
+                "post"=> $post
+            ];
     }
 
     /**
@@ -46,7 +68,14 @@ class TerritorialController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = territorial::find($id);
+        if (!$post) {
+           return response()->json([
+               "status"=>false,
+               "message"=> "Post not found"
+           ])->setStatusCode(404);
+        }
+        return $post;
     }
 
     /**

@@ -68,7 +68,15 @@ class JusticeController extends Controller
      */
     public function show($id)
     {
-        //
+        //  return justice::find($id);
+         $post = justice::find($id);
+         if (!$post) {
+            return response()->json([
+                "status"=>false,
+                "message"=> "Post not found"
+            ])->setStatusCode(404);
+         }
+         return $post;
     }
 
     /**

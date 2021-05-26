@@ -14,7 +14,7 @@ class CreateMeasuresTable extends Migration
     public function up()
     {
         Schema::create('measures', function (Blueprint $table) {
-            $table->integer('idMeri');
+            $table->integer('id');
             $table->integer('idObr')->nullable();
             $table->text('textOtveta')->nullable();
             $table->timestamps();
