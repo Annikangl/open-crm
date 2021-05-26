@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Models\podrazdel;
 use Illuminate\Http\Request;
-
+use Validator;
 class PodrazdelController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class PodrazdelController extends Controller
      */
     public function index()
     {
-        //
+        return podrazdel::all();
     }
 
     /**
@@ -35,7 +36,7 @@ class PodrazdelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

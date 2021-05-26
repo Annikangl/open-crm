@@ -14,7 +14,7 @@ class CreateTerritorialsTable extends Migration
     public function up()
     {
         Schema::create('territorials', function (Blueprint $table) {
-            $table->integer('idTerritor');
+            $table->integer('id');
             $table->string('gorod')->nullable();
             $table->timestamps();
         });

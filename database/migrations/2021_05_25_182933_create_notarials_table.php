@@ -14,7 +14,7 @@ class CreateNotarialsTable extends Migration
     public function up()
     {
         Schema::create('notarials', function (Blueprint $table) {
-            $table->integer('idNotarial');
+            $table->integer('id');
             $table->string('name')->nullable();
             $table->timestamps();
         });

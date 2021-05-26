@@ -14,7 +14,7 @@ class CreateJusticesTable extends Migration
     public function up()
     {
         Schema::create('justices', function (Blueprint $table) {
-            $table->integer('idJustices');
+            $table->integer('id');
             $table->string('otdel')->nullable();
             $table->timestamps();
         });
