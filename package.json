@@ -26,6 +26,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "materialize-css": "^1.0.0-rc.2",
         "vue-router": "^3.5.1"
     }
 }
