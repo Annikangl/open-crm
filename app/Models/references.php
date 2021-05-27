@@ -9,4 +9,5 @@ use Illuminate\Database\Eloquent\Model;
 class references extends Model
 {
     use HasFactory;
+    protected $fillable = ['idUser','FIO','telephone','prichinaObr','textObr','idPodr'];
 }

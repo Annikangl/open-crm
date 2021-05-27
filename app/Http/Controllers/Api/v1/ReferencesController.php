@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Models\references;
 use Illuminate\Http\Request;
-
+use Validator;
 class ReferencesController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class ReferencesController extends Controller
      */
     public function index()
     {
-        //
+        return references::all();
     }
 
     /**
@@ -35,7 +36,35 @@ class ReferencesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatior = Validator::make(
+            $request->all(),
+            [
+                "idUser"=>["required"],
+                "FIO"=>["required"],
+                "telephone"=>["required"],
+                "prichinaObr"=>["required"],
+                "textObr"=>["required"],
+                "idPodr"=>["required"]
+            ]);
+
+            if ($validatior->fails()) {
+                return [
+                    "status"=>false,
+                    "errors"=>$validatior->messages()
+                ];
+            }
+            $post= references::create([
+                "idUser" => $request->idUser,
+                "FIO" => $request->FIO,
+                "telephone" => $request->telephone,
+                "prichinaObr" => $request->prichinaObr,
+                "textObr" => $request->textObr,
+                "idPodr" => $request->idPodr
+            ]);
+            return[
+                "status" => true,
+                "post"=> $post
+            ];
     }
 
     /**

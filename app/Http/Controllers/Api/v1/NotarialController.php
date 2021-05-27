@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Models\notarial;
 use Illuminate\Http\Request;
-
+use Validator;
 class NotarialController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class NotarialController extends Controller
      */
     public function index()
     {
-        //
+        return notarial::all();
     }
 
     /**
@@ -35,7 +36,25 @@ class NotarialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatior = Validator::make(
+            $request->all(),
+            [
+                "name"=>["required"]
+            ]);
+
+            if ($validatior->fails()) {
+                return [
+                    "status"=>false,
+                    "errors"=>$validatior->messages()
+                ];
+            }
+            $post= notarial::create([
+                "name" => $request->name
+            ]);
+            return[
+                "status" => true,
+                "post"=> $post
+            ];
     }
 
     /**
@@ -46,7 +65,14 @@ class NotarialController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = notarial::find($id);
+        if (!$post) {
+           return response()->json([
+               "status"=>false,
+               "message"=> "Post not found"
+           ])->setStatusCode(404);
+        }
+        return $post;
     }
 
     /**

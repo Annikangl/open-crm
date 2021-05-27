@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Models\measures;
 use Illuminate\Http\Request;
-
+use Validator;
 class MeasuresController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class MeasuresController extends Controller
      */
     public function index()
     {
-        //
+        return measures::all();
     }
 
     /**
