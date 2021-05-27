@@ -15,9 +15,9 @@ class CreatePodrazdelsTable extends Migration
     {
         Schema::create('podrazdels', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('idOrganMinusta')->nullable();
-            $table->integer('idTerritorial')->nullable();
-            $table->integer('idNotarial')->nullable();
+            $table->integer('idOrganMinusta');
+            $table->integer('idTerritorial');
+            $table->integer('idNotarial');
             $table->timestamps();
         });
     }

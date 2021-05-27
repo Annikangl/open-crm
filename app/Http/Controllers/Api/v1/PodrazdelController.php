@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\NamePodrazdelCollection;
+use App\Models\justice;
+use App\Models\notarial;
 use App\Models\podrazdel;
 use Illuminate\Http\Request;
 use Validator;
+use App\Http\Resources\podrazdel as podrazdelResource;
+use App\Http\Resources\podrazdelCollection;
+
 class PodrazdelController extends Controller
 {
     /**
@@ -15,7 +21,32 @@ class PodrazdelController extends Controller
      */
     public function index()
     {
-        return podrazdel::all();
+       
+
+        $podrazdels = podrazdel::all();
+
+        return response()->json([
+            "podrazdels"=>new podrazdelCollection($podrazdels)
+        ]);
+
+        // $podrazdelList = [];
+        // foreach ($podrazdels as $podrazdel){
+
+        //     $names = $podrazdel->takeName; //используем функцию по получению имен
+        //     $namesList=[];
+        //     foreach($names as $name){
+        //         $namesList[]=$name->name;
+        //     }
+        //     $this->podrazdelList[]= [
+        //         "id" => $podrazdel->id,
+        //         "NameOtdel"=>$podrazdel->nameOtdel,
+        //         // "idOrganMinusta" => justice::where('id',$podrazdel->idOrganMinusta)->get(),
+        //         // "idTerritorial" => notarial::where('id',$podrazdel->idTerritorial)->get(),
+        //         // "idNotarial" => notarial::where('id',$podrazdel->idNotarial)->get()
+        //         "NamePodrazdel"=>$namesList
+        //     ];
+        // }
+        // return $this->podrazdelList;
     }
 
     /**
@@ -47,7 +78,11 @@ class PodrazdelController extends Controller
      */
     public function show($id)
     {
-        //
+        $podrazdel = podrazdel::find($id);
+        return response()->json([
+            "podrazdel"=>new podrazdelResource($podrazdel)
+        ]);
+
     }
 
     /**

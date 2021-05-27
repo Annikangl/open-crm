@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class justice extends Model
 {
     use HasFactory;
-    protected $fillable = ['otdel'];
+    protected $fillable = ['idOtdel','name'];
 }
