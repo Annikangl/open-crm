@@ -41,7 +41,7 @@ class JusticeController extends Controller
         $validatior = Validator::make(
             $request->all(),
             [
-                "otdel"=>["required"]
+                "name"=>["required"]
             ]);
 
             if ($validatior->fails()) {
@@ -51,7 +51,7 @@ class JusticeController extends Controller
                 ];
             }
             $post= justice::create([
-                "otdel" => $request->otdel
+                "name" => $request->otdel
             ]);
             return[
                 "status" => true,

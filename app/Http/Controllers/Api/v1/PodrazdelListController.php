@@ -1,13 +1,12 @@
 <?php
-//Территориальные органы
+
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\territorial;
+use App\Models\podrazdelList;
 use Illuminate\Http\Request;
-use Validator;
 
-class TerritorialController extends Controller
+class PodrazdelListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class TerritorialController extends Controller
      */
     public function index()
     {
-        return territorial::all();
+        return podrazdelList::all();
     }
 
     /**
@@ -37,29 +36,7 @@ class TerritorialController extends Controller
      */
     public function store(Request $request)
     {
-        $validatior = Validator::make(
-            $request->all(),
-            [
-                "idOtdel"=>["required"],
-                "gorod"=>["required"],
-                "name"=>["required"]
-            ]);
-
-            if ($validatior->fails()) {
-                return [
-                    "status"=>false,
-                    "errors"=>$validatior->messages()
-                ];
-            }
-            $post= territorial::create([
-                "idOtdel" => $request->idOtdel,
-                "gorod" => $request->gorod,
-                "name" => $request->structura
-            ]);
-            return[
-                "status" => true,
-                "post"=> $post
-            ];
+        //
     }
 
     /**
@@ -70,14 +47,7 @@ class TerritorialController extends Controller
      */
     public function show($id)
     {
-        $post = territorial::find($id);
-        if (!$post) {
-           return response()->json([
-               "status"=>false,
-               "message"=> "Post not found"
-           ])->setStatusCode(404);
-        }
-        return $post;
+        //
     }
 
     /**

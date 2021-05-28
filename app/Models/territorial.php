@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class territorial extends Model
 {
     use HasFactory;
-    protected $fillable = ['gorod','structura'];
+    protected $fillable = ['idOtdel','gorod','name'];
 }
