@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "materialize-css": "^1.0.0-rc.2",
-        "vue-router": "^3.5.1"
+        "vue-router": "^3.5.1",
+        "vuelidate": "^0.7.6"
     }
 }
