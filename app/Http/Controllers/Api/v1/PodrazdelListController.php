@@ -1,14 +1,12 @@
 <?php
-//органы Минюста
+
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\justice;
-use Dotenv\Parser\Value;
+use App\Models\podrazdelList;
 use Illuminate\Http\Request;
-use Validator;
 
-class JusticeController extends Controller
+class PodrazdelListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class JusticeController extends Controller
      */
     public function index()
     {
-        return justice::all();
+        return podrazdelList::all();
     }
 
     /**
@@ -38,27 +36,8 @@ class JusticeController extends Controller
      */
     public function store(Request $request)
     {
-        $validatior = Validator::make(
-            $request->all(),
-            [
-                "name"=>["required"]
-            ]);
-
-            if ($validatior->fails()) {
-                return [
-                    "status"=>false,
-                    "errors"=>$validatior->messages()
-                ];
-            }
-            $post= justice::create([
-                "name" => $request->otdel
-            ]);
-            return[
-                "status" => true,
-                "post"=> $post
-            ];
+        //
     }
-    
 
     /**
      * Display the specified resource.
@@ -68,15 +47,7 @@ class JusticeController extends Controller
      */
     public function show($id)
     {
-        //  return justice::find($id);
-         $post = justice::find($id);
-         if (!$post) {
-            return response()->json([
-                "status"=>false,
-                "message"=> "Post not found"
-            ])->setStatusCode(404);
-         }
-         return $post;
+        //
     }
 
     /**

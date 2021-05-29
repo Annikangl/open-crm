@@ -22,7 +22,7 @@ window.Vue = require('vue').default;
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('navbar', require('./components/app/Navbar.vue').default);
 
-import Vue from 'vue';
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,10 +30,15 @@ import Vue from 'vue';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Vue from 'vue';
+import Vuelidate from 'vuelidate';
 import router from './router';
-import 'materialize-css/dist/js/materialize.min'
+import 'materialize-css/dist/js/materialize.min';
+
+Vue.use(Vuelidate);
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    Vuelidate,
 });

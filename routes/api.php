@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\v1\JusticeController;
 use App\Http\Controllers\Api\v1\PodrazdelController;
 use App\Http\Controllers\Api\v1\MeasuresController;
 use App\Http\Controllers\Api\v1\TerritorialController;
+use App\Http\Controllers\Api\v1\PodrazdelListController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,3 +33,4 @@ Route::resource('justice', JusticeController::class);
 Route::resource('podrazdel', PodrazdelController::class);
 Route::resource('measures', MeasuresController::class);
 Route::resource('territorial', TerritorialController::class);
+Route::resource('podrazdelList', PodrazdelListController::class);

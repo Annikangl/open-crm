@@ -1904,9 +1904,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
-/* harmony import */ var materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! materialize-css/dist/js/materialize.min */ "./node_modules/materialize-css/dist/js/materialize.min.js");
-/* harmony import */ var materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_2__);
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
+/* harmony import */ var materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! materialize-css/dist/js/materialize.min */ "./node_modules/materialize-css/dist/js/materialize.min.js");
+/* harmony import */ var materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_3__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -1927,7 +1928,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('navbar', __webpack_require__(/*! ./components/app/Navbar.vue */ "./resources/js/components/app/Navbar.vue").default);
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -1936,9 +1936,13 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.component('navbar', __webpack_require__
 
 
 
+
+
+vue__WEBPACK_IMPORTED_MODULE_0__.default.use(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: '#app',
-  router: _router__WEBPACK_IMPORTED_MODULE_1__.default
+  router: _router__WEBPACK_IMPORTED_MODULE_2__.default,
+  Vuelidate: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
 });
 
 /***/ }),
@@ -2004,6 +2008,15 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default);
 var routes = [{
+  path: '/login',
+  name: 'login',
+  meta: {
+    layout: 'empty'
+  },
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Login.vue */ "./resources/js/views/Login.vue"));
+  }
+}, {
   path: "/",
   name: 'Home',
   meta: {
@@ -2011,6 +2024,12 @@ var routes = [{
   },
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_views_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Home */ "./resources/js/views/Home.vue"));
+  }
+}, {
+  path: "/admin",
+  name: 'Admin',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_Admin_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Admin */ "./resources/js/views/Admin.vue"));
   }
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
@@ -52920,7 +52939,7 @@ Vue.compile = compileToFunctions;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_views_Home_vue") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_Login_vue":1,"resources_js_views_Home_vue":1,"resources_js_views_Admin_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
