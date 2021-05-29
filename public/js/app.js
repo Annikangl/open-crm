@@ -1904,10 +1904,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
-/* harmony import */ var materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! materialize-css/dist/js/materialize.min */ "./node_modules/materialize-css/dist/js/materialize.min.js");
-/* harmony import */ var materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_message_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/message.plugin */ "./resources/js/utils/message.plugin.js");
+/* harmony import */ var materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! materialize-css/dist/js/materialize.min */ "./node_modules/materialize-css/dist/js/materialize.min.js");
+/* harmony import */ var materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(materialize_css_dist_js_materialize_min__WEBPACK_IMPORTED_MODULE_3__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -1916,6 +1917,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
+window.Vuelidate = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js").default;
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -1938,11 +1940,13 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.component('navbar', __webpack_require__
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vuelidate__WEBPACK_IMPORTED_MODULE_3__.default);
+
+vue__WEBPACK_IMPORTED_MODULE_0__.default.use(Vuelidate);
+vue__WEBPACK_IMPORTED_MODULE_0__.default.use(_utils_message_plugin__WEBPACK_IMPORTED_MODULE_2__.default);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_1__.default,
-  Vuelidate: vuelidate__WEBPACK_IMPORTED_MODULE_3__.default
+  vuelidate: vuelidate__WEBPACK_IMPORTED_MODULE_4__.default
 });
 
 /***/ }),
@@ -2036,6 +2040,35 @@ var routes = [{
   mode: "history",
   routes: routes
 }));
+
+/***/ }),
+
+/***/ "./resources/js/utils/message.plugin.js":
+/*!**********************************************!*\
+  !*** ./resources/js/utils/message.plugin.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  install: function install(Vue, options) {
+    Vue.prototype.$message = function (html) {
+      M.toast({
+        html: html
+      });
+    };
+
+    Vue.prototype.$error = function (html) {
+      M.toast({
+        html: "[\u041E\u0448\u0438\u0431\u043A\u0430]: ".concat(html)
+      });
+    };
+  }
+});
 
 /***/ }),
 
@@ -37554,7 +37587,7 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
+              _c("a", { attrs: { href: "/login" } }, [
                 _c("i", { staticClass: "material-icons" }, [
                   _vm._v("account_circle")
                 ])

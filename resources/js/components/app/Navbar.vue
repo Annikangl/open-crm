@@ -6,7 +6,7 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="#"><i class="material-icons">email</i></a></li>
         <li><a href="#"><i class="material-icons">info</i></a></li>
-        <li><a href="#"><i class="material-icons">account_circle</i></a></li>
+        <li><a href="/login"><i class="material-icons">account_circle</i></a></li>
       </ul>
     </div>
     </div>
