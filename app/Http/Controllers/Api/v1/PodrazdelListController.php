@@ -47,7 +47,14 @@ class PodrazdelListController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = podrazdelList::find($id);
+        if (!$post) {
+           return response()->json([
+               "status"=>false,
+               "message"=> "Post not found"
+           ])->setStatusCode(404);
+        }
+        return $post;
     }
 
     /**
@@ -58,7 +65,7 @@ class PodrazdelListController extends Controller
      */
     public function edit($id)
     {
-        //
+     
     }
 
     /**

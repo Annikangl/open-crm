@@ -72,15 +72,7 @@
                         >
                           Заполните поле
                         </small>
-                        <small
-                          class="helper-text invalid"
-                          v-else-if="
-                            $v.firstName.$dirty && !$v.firstName.minLength
-                          "
-                        >
-                          От {{ $v.firstName.$params.minLength.min }} до
-                          {{ minLength.length }} символов
-                        </small>
+
                       </div>
                       <div class="input-field col s4">
                         <input
@@ -150,19 +142,18 @@
 
                     <div class="row">
                       <div class="input-field col s8">
-                        <select ref="select">
+                        <select ref="select" v-model="issue_select">
                           <option value="" disabled selected>
                             Выберите причину обращения
                           </option>
                           <option
                             v-for="issue in issues"
                             :key="issue.issue"
-                            value=""
+                            :value="issue.issue"
                           >
                             {{ issue.issue }}
                           </option>
-                          <!-- <option value="2">Причина 2</option>
-                          <option value="3">Причина 3</option> -->
+  
                         </select>
                         <label>Причина обращения</label>
                       </div>
@@ -170,14 +161,9 @@
 
                     <div class="row">
                       <div class="input-field col s12">
-                        <select class="group-select" ref="select2">
-                          <optgroup label="Орган">
-                            <option value="1">Подразделение 1</option>
-                            <option value="2">Подразделение 2</option>
-                          </optgroup>
-                          <optgroup label="Орган 2">
-                            <option value="3">Подразделение 3</option>
-                            <option value="4">Подразделение 4</option>
+                        <select class="group-select" ref="select2" v-model="depart_select">
+                          <optgroup v-for="(department,index) in departments" :key="index" :label="department.NameOtdel">
+                            <option  :value="department.NamePodrazdel">{{ department.NamePodrazdel }} </option>
                           </optgroup>
                         </select>
                         <label>Структурное подразделение</label>
@@ -191,6 +177,7 @@
                             <textarea
                               id="textarea1"
                               class="materialize-textarea"
+                              v-model="note"
                             ></textarea>
                             <label for="textarea1">Примечание</label>
                           </div>
@@ -199,7 +186,9 @@
                     </div>
 
                     <div class="row">
-                      <div class="col s12"></div>
+                      <div class="col s12">
+       
+                      </div>
                     </div>
                     <div class="row">
                       <div class="form-actions">
@@ -218,6 +207,8 @@
 </template>
 
 <script>
+
+import axios from 'axios';
 import M from "materialize-css";
 import Navbar from "../components/app/Navbar";
 import Modal from "../components/app/Modal";
@@ -236,6 +227,9 @@ export default {
     lastName: "",
     middleName: "",
     email: "",
+    issue_select: "",
+    depart_select: "",
+    note: "",
 
     select: null,
     value: 1,
@@ -246,10 +240,11 @@ export default {
       { issue: "Превышение полномочий", value: "" },
       { issue: "Просто уебок", value: "" },
     ],
+    departments: null,
   }),
 
   validations: {
-    firstName: { required, minLength: minLength(6) },
+    firstName: { required, minLength: minLength(2) },
     lastName: { required, minLength: minLength(6) },
     middleName: { required, minLength: minLength(6) },
     email: { email, required },
@@ -261,14 +256,49 @@ export default {
         this.$v.$touch();
         return;
       }
-      this.$router.push("/");
+
+      const formData = {
+        userId: Math.floor(Math.random() * 10),
+        fullName: this.firstName + ' ' + this.lastName + ' ' + this.middleName,
+        email: this.email,
+        issue: this.issue_select,
+        department: this.depart_select,
+        note: this.note,
+      }
+
+      // console.log(this.departments);
+
+      // for (let i = 0; i < this.departments.length; i++) {
+      //   for (let item in this.departments[i]) {
+      //     console.log(item)
+      //   }
+      // }
+
+      
+
+      // for (let i = 0; i < this.departments.length; i++) {
+      //   console.log(this.departments[i]['NamePodrazdel']);
+
+      //   // for (let q = 0; q < this.departments[i]; q++) {
+      //   //   console.log(this.departments[i][q]);
+      //   // }
+      // }
+      
+      
     },
   },
 
   mounted() {
+    axios
+      .get('http://127.0.0.1:8000/api/podrazdel')
+      .then(response => (this.departments = response.data.podrazdels))
+
     this.modal = M.Modal.init(this.$refs.modal, {});
     this.select = M.FormSelect.init(this.$refs.select, {});
     this.select = M.FormSelect.init(this.$refs.select2, {});
+    this.$error('хохла спросить забыли');
+
+    
   },
 };
 </script>

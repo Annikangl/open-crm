@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+window.Vuelidate = require('vuelidate').default;
 
 /**
  * The following block of code may be used to automatically register your
@@ -31,14 +32,16 @@ Vue.component('navbar', require('./components/app/Navbar.vue').default);
  */
 
 import Vue from 'vue';
-import Vuelidate from 'vuelidate';
+import vuelidate from 'vuelidate';
 import router from './router';
+import messagePlugin from './utils/message.plugin';
 import 'materialize-css/dist/js/materialize.min';
 
 Vue.use(Vuelidate);
+Vue.use(messagePlugin);
 
 const app = new Vue({
     el: '#app',
     router,
-    Vuelidate,
+    vuelidate,
 });
