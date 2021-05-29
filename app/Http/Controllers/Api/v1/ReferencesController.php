@@ -15,7 +15,15 @@ class ReferencesController extends Controller
      */
     public function index()
     {
-        return references::all();
+        $post= references::all();
+        if (!$post) {
+            return response()->json([
+                "status"=>false,
+                "message"=> "Post not found"
+            ])->setStatusCode(404);
+         }
+         return $post;
+        
     }
 
     /**
@@ -39,7 +47,6 @@ class ReferencesController extends Controller
         $validatior = Validator::make(
             $request->all(),
             [
-                "idUser"=>["required"],
                 "FIO"=>["required"],
                 "telephone"=>["required"],
                 "prichinaObr"=>["required"],
@@ -54,7 +61,6 @@ class ReferencesController extends Controller
                 ];
             }
             $post= references::create([
-                "idUser" => $request->idUser,
                 "FIO" => $request->FIO,
                 "telephone" => $request->telephone,
                 "prichinaObr" => $request->prichinaObr,
@@ -75,7 +81,14 @@ class ReferencesController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = references::find($id);
+        if (!$post) {
+           return response()->json([
+               "status"=>false,
+               "message"=> "Post not found"
+           ])->setStatusCode(404);
+        }
+        return $post;
     }
 
     /**
