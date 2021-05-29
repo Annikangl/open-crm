@@ -36,7 +36,28 @@ class MeasuresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatior = Validator::make(
+            $request->all(),
+            [
+                "idObr"=>["required"],
+                "textOtveta"=>["required"],
+            ]);
+
+            if ($validatior->fails()) {
+                return [
+                    "status"=>false,
+                    "errors"=>$validatior->messages()
+                ];
+            }
+            $post= measures::create([
+                "idObr" => $request->idObr,
+                "textOtveta" => $request->textOtveta,
+
+            ]);
+            return[
+                "status" => true,
+                "post"=> $post
+            ];
     }
 
     /**
@@ -47,7 +68,14 @@ class MeasuresController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = measures::find($id);
+        if (!$post) {
+           return response()->json([
+               "status"=>false,
+               "message"=> "Post not found"
+           ])->setStatusCode(404);
+        }
+        return $post;
     }
 
     /**

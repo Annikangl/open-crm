@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\v1\PodrazdelController;
 use App\Http\Controllers\Api\v1\MeasuresController;
 use App\Http\Controllers\Api\v1\TerritorialController;
 use App\Http\Controllers\Api\v1\PodrazdelListController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,25 @@ use App\Http\Controllers\Api\v1\PodrazdelListController;
 // });
 
 Route::resource('user', UsersController::class);
-Route::resource('notarial', NotarialController::class);
+Route::post('/register', [UsersController::class,"store"]);
+Route::post('/login', [UsersController::class,"login"]);
+
+// Route::get('/test', function(){
+//     return[
+//         "key"=> \Illuminate\Support\Str::random(30),
+//         "port" => 4743,
+//         "api_url"=>"sdsdsdsd"
+//     ];
+// })->middleware('bearer-auth');
+
+
+
+// Route::resource('notarial', NotarialController::class);
+// Route::resource('territorial', TerritorialController::class);
+// Route::resource('justice', JusticeController::class);
+
 Route::resource('references', ReferencesController::class);
-Route::resource('justice', JusticeController::class);
 Route::resource('podrazdel', PodrazdelController::class);
 Route::resource('measures', MeasuresController::class);
-Route::resource('territorial', TerritorialController::class);
+
 Route::resource('podrazdelList', PodrazdelListController::class);
