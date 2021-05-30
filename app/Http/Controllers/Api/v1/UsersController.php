@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Validator;
 class UsersController extends Controller
 {
@@ -37,7 +39,64 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatior = Validator::make(
+            $request->all(),
+            [
+                "name"=>["required"],
+                "email"=>["required"],
+                "password"=>["required"],
+            ]);
+
+            if ($validatior->fails()) {
+                return response()->json([
+                    "status"=>false,
+                    "errors"=>$validatior->messages()
+                ]);
+            }
+            $post= User::create([
+                "name" => $request->name,
+                "email" => $request->email,
+                "password" => Hash::make($request->password) //шифруем пароль
+            ]);
+            // if (User::check($request->email,$post->email)) {
+            //     return response()->json([
+            //         "status"=>false,
+            //         "message"=> "Post dont add"
+            //     ])->setStatusCode(404);
+            //  }
+            return response()->json([
+                "status" => true,
+                "post"=> $post
+            ]);
+    }
+    public function login(Request $request){
+
+        $user = User::where('email',$request->email)->first(); //выгрузить из базы
+        if (is_null($user)) {
+            return response()->json([
+                "status"=>false,
+
+            ])->setStatusCode(401);
+        }
+        // dd(Hash::check($request->password,$user->password));
+        if (Hash::check($request->password,$user->password)) {
+           // auth Ok
+            $token = Str::random(20);
+            $user->token = $token;
+            $user->save();
+
+            return response()->json([
+                "status"=>true,
+                "token"=>$token
+            ]);
+
+        }else {
+            return response()->json([
+                "status"=>false,
+            ])->setStatusCode(401);
+        }
+       
+
     }
 
     /**
@@ -48,7 +107,14 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = User::find($id);
+        if (!$post) {
+           return response()->json([
+               "status"=>false,
+               "message"=> "Post not found"
+           ])->setStatusCode(404);
+        }
+        return $post;
     }
 
     /**
