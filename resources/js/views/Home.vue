@@ -72,7 +72,6 @@
                         >
                           Заполните поле
                         </small>
-
                       </div>
                       <div class="input-field col s4">
                         <input
@@ -94,12 +93,16 @@
                         </small>
                       </div>
                       <div class="input-field col s4">
-                        <input id="middle_name" type="text" 
-                        v-model.trim="middleName"
-                        :class="{
+                        <input
+                          id="middle_name"
+                          type="text"
+                          v-model.trim="middleName"
+                          :class="{
                             invalid:
-                              ($v.middleName.$dirty && !$v.middleName.required) ||
-                              ($v.middleName.$dirty && !$v.middleName.minLength),
+                              ($v.middleName.$dirty &&
+                                !$v.middleName.required) ||
+                              ($v.middleName.$dirty &&
+                                !$v.middleName.minLength),
                           }"
                         />
                         <label for="middle_name">Отчество</label>
@@ -141,6 +144,13 @@
                     </div>
 
                     <div class="row">
+                      <div class="input-field col s6">
+                          <input type="text" name="telephone" id="telephone" v-model="telephone">
+                        <label for="telephone">Номер телефона</label>
+                      </div>
+                    </div>
+
+                    <div class="row">
                       <div class="input-field col s8">
                         <select ref="select" v-model="issue_select">
                           <option value="" disabled selected>
@@ -153,7 +163,6 @@
                           >
                             {{ issue.issue }}
                           </option>
-  
                         </select>
                         <label>Причина обращения</label>
                       </div>
@@ -161,9 +170,28 @@
 
                     <div class="row">
                       <div class="input-field col s12">
-                        <select class="group-select" ref="select2" v-model="depart_select">
-                          <optgroup v-for="(department,index) in departments" :key="index" :label="department.NameOtdel">
-                            <option  :value="department.NamePodrazdel">{{ department.NamePodrazdel }} </option>
+                      
+                        
+                        <select
+                          ref="select2"
+                          v-model="select2"
+                        >
+                          <optgroup
+                            v-for="department in deps"
+                            :key="department.id"
+                            :label="department.nameOtdel"
+                          >
+                          
+                            <option
+                              v-for="{
+                                NamePodrazdel,
+                                id,
+                              } in department.NamePodrazdel"
+                              :key="id"
+                              :value="id"
+                            >
+                              {{ NamePodrazdel }}
+                            </option>
                           </optgroup>
                         </select>
                         <label>Структурное подразделение</label>
@@ -185,11 +213,19 @@
                       </form>
                     </div>
 
-                    <div class="row">
-                      <div class="col s12">
-       
-                      </div>
-                    </div>
+                  <!-- <div class="row">
+                    <ul>
+                      <li v-for="department in departments"
+                            :key="department.id"
+                            >
+                      <b>{{department.NameOtdel}} </b>
+                      <ul>
+                        <li v-for="{NamePodrazdel,id,} in department.NamePodrazdel"
+                              :key="id">  {{ NamePodrazdel }} </li>
+                      </ul>
+                      </li>
+                    </ul>
+                  </div> -->
                     <div class="row">
                       <div class="form-actions">
                         <button type="submit" class="btn">Отправить</button>
@@ -207,8 +243,8 @@
 </template>
 
 <script>
-
-import axios from 'axios';
+import axios from "axios";
+import store from '../store';
 import M from "materialize-css";
 import Navbar from "../components/app/Navbar";
 import Modal from "../components/app/Modal";
@@ -227,11 +263,13 @@ export default {
     lastName: "",
     middleName: "",
     email: "",
+    telephone: "",
     issue_select: "",
     depart_select: "",
     note: "",
 
     select: null,
+    select2: '',
     value: 1,
     issues: [
       { issue: "Замечание по работе", value: "" },
@@ -240,7 +278,34 @@ export default {
       { issue: "Превышение полномочий", value: "" },
       { issue: "Просто уебок", value: "" },
     ],
-    departments: null,
+    // departments: null,
+    deps: [
+      {id: 1, nameOtdel: "Центральный аппарат Министерства юстиции", NamePodrazdel: [
+        {id: 1, NamePodrazdel: "Отдел приема документов"},
+        {id: 2, NamePodrazdel: "Отдел обработки документов"},
+        {id: 3, NamePodrazdel: "Отдел сбора информации"},
+        {id: 4, NamePodrazdel: "Отдел записи актов гражданского состояния"},
+        {id: 5, NamePodrazdel: "Отдел государственной регистрации вещных прав"},
+        {id: 6, NamePodrazdel: "Отдел государственной исполнительной службы"},
+        {id: 7, NamePodrazdel: "Отдел технической инвентаризации, учета и оценки н"},
+      ]},
+      {id: 2, nameOtdel: "Территориальные ограны", NamePodrazdel: [
+        {id: 8, NamePodrazdel: "Донецкий городской отдел ЗАГС"},
+        {id: 9, NamePodrazdel: "Макеевский городской отдел ЗАГС"},
+        {id: 10, NamePodrazdel: "Енакиевский городской отдел ЗАГС"},
+        {id: 11, NamePodrazdel: "Горловский городской отдел ЗАГС"},
+        {id: 12, NamePodrazdel: "Харцызский городской отдел ЗАГС"},
+      ]},
+      {id: 3, nameOtdel: "Государственный нотариальный архив", NamePodrazdel: [
+        {id: 13, NamePodrazdel: "Государственная нотариальная контора города Донецк"},
+        {id: 14, NamePodrazdel: "Государственная нотариальная контора города Харцызск"},
+        {id: 15, NamePodrazdel: "осударственная нотариальная контора города Снежное"},
+        {id: 16, NamePodrazdel: "Государственная нотариальная контора города Макеевка"},
+        {id: 17, NamePodrazdel: "Государственная нотариальная контора пгт Старобешево"},
+        {id: 18, NamePodrazdel: "Государственная нотариальная контора города Ясиноватая"},
+        {id: 19, NamePodrazdel: "Государственная нотариальная контора города Новоазовск"},
+      ]},
+    ]
   }),
 
   validations: {
@@ -251,7 +316,7 @@ export default {
   },
 
   methods: {
-    submitForm() {
+    async submitForm() {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
@@ -259,46 +324,34 @@ export default {
 
       const formData = {
         userId: Math.floor(Math.random() * 10),
-        fullName: this.firstName + ' ' + this.lastName + ' ' + this.middleName,
+        fio: this.firstName + " " + this.lastName + " " + this.middleName,
         email: this.email,
-        issue: this.issue_select,
-        department: this.depart_select,
-        note: this.note,
+        telephone: this.telephone,
+        prichinaObr: this.issue_select,
+        idPodr: this.select2,
+        textObr: this.note,
+      };
+
+      try {
+          await this.$store.dispatch('sendReference', formData)
+          // this.$router.push('/admin')
+      } catch(e) {
+        console.log(e);
       }
-
-      // console.log(this.departments);
-
-      // for (let i = 0; i < this.departments.length; i++) {
-      //   for (let item in this.departments[i]) {
-      //     console.log(item)
-      //   }
-      // }
-
-      
-
-      // for (let i = 0; i < this.departments.length; i++) {
-      //   console.log(this.departments[i]['NamePodrazdel']);
-
-      //   // for (let q = 0; q < this.departments[i]; q++) {
-      //   //   console.log(this.departments[i][q]);
-      //   // }
-      // }
-      
       
     },
   },
 
   mounted() {
-    axios
-      .get('http://127.0.0.1:8000/api/podrazdel')
-      .then(response => (this.departments = response.data.podrazdels))
+    // axios
+    //   .get("http://127.0.0.1:8000/api/podrazdel")
+    //   .then((response) => (this.departments = response.data.podrazdels));
 
     this.modal = M.Modal.init(this.$refs.modal, {});
     this.select = M.FormSelect.init(this.$refs.select, {});
-    this.select = M.FormSelect.init(this.$refs.select2, {});
-    this.$error('хохла спросить забыли');
+    this.select2 = M.FormSelect.init(this.$refs.select2, {});
 
-    
+    this.$error("Select все еще не работает");
   },
 };
 </script>

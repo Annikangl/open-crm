@@ -32,6 +32,7 @@ Vue.component('navbar', require('./components/app/Navbar.vue').default);
  */
 
 import Vue from 'vue';
+import store from './store';
 import vuelidate from 'vuelidate';
 import router from './router';
 import messagePlugin from './utils/message.plugin';
@@ -43,5 +44,6 @@ Vue.use(messagePlugin);
 const app = new Vue({
     el: '#app',
     router,
+    store,
     vuelidate,
 });
