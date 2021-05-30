@@ -36,13 +36,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! materialize-css */ "./node_modules/materialize-css/dist/js/materialize.js");
-/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(materialize_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_app_Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/app/Navbar */ "./resources/js/components/app/Navbar.vue");
-/* harmony import */ var _components_app_Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/app/Modal */ "./resources/js/components/app/Modal.vue");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! materialize-css */ "./node_modules/materialize-css/dist/js/materialize.js");
+/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(materialize_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_app_Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/app/Navbar */ "./resources/js/components/app/Navbar.vue");
+/* harmony import */ var _components_app_Modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/app/Modal */ "./resources/js/components/app/Modal.vue");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -251,6 +260,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -259,8 +305,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Home",
   components: {
-    Navbar: _components_app_Navbar__WEBPACK_IMPORTED_MODULE_2__.default,
-    Modal: _components_app_Modal__WEBPACK_IMPORTED_MODULE_3__.default
+    Navbar: _components_app_Navbar__WEBPACK_IMPORTED_MODULE_4__.default,
+    Modal: _components_app_Modal__WEBPACK_IMPORTED_MODULE_5__.default
   },
   data: function data() {
     return {
@@ -269,10 +315,12 @@ __webpack_require__.r(__webpack_exports__);
       lastName: "",
       middleName: "",
       email: "",
+      telephone: "",
       issue_select: "",
       depart_select: "",
       note: "",
       select: null,
+      select2: '',
       value: 1,
       issues: [{
         issue: "Замечание по работе",
@@ -290,65 +338,156 @@ __webpack_require__.r(__webpack_exports__);
         issue: "Просто уебок",
         value: ""
       }],
-      departments: null
+      // departments: null,
+      deps: [{
+        id: 1,
+        nameOtdel: "Центральный аппарат Министерства юстиции",
+        NamePodrazdel: [{
+          id: 1,
+          NamePodrazdel: "Отдел приема документов"
+        }, {
+          id: 2,
+          NamePodrazdel: "Отдел обработки документов"
+        }, {
+          id: 3,
+          NamePodrazdel: "Отдел сбора информации"
+        }, {
+          id: 4,
+          NamePodrazdel: "Отдел записи актов гражданского состояния"
+        }, {
+          id: 5,
+          NamePodrazdel: "Отдел государственной регистрации вещных прав"
+        }, {
+          id: 6,
+          NamePodrazdel: "Отдел государственной исполнительной службы"
+        }, {
+          id: 7,
+          NamePodrazdel: "Отдел технической инвентаризации, учета и оценки н"
+        }]
+      }, {
+        id: 2,
+        nameOtdel: "Территориальные ограны",
+        NamePodrazdel: [{
+          id: 8,
+          NamePodrazdel: "Донецкий городской отдел ЗАГС"
+        }, {
+          id: 9,
+          NamePodrazdel: "Макеевский городской отдел ЗАГС"
+        }, {
+          id: 10,
+          NamePodrazdel: "Енакиевский городской отдел ЗАГС"
+        }, {
+          id: 11,
+          NamePodrazdel: "Горловский городской отдел ЗАГС"
+        }, {
+          id: 12,
+          NamePodrazdel: "Харцызский городской отдел ЗАГС"
+        }]
+      }, {
+        id: 3,
+        nameOtdel: "Государственный нотариальный архив",
+        NamePodrazdel: [{
+          id: 13,
+          NamePodrazdel: "Государственная нотариальная контора города Донецк"
+        }, {
+          id: 14,
+          NamePodrazdel: "Государственная нотариальная контора города Харцызск"
+        }, {
+          id: 15,
+          NamePodrazdel: "осударственная нотариальная контора города Снежное"
+        }, {
+          id: 16,
+          NamePodrazdel: "Государственная нотариальная контора города Макеевка"
+        }, {
+          id: 17,
+          NamePodrazdel: "Государственная нотариальная контора пгт Старобешево"
+        }, {
+          id: 18,
+          NamePodrazdel: "Государственная нотариальная контора города Ясиноватая"
+        }, {
+          id: 19,
+          NamePodrazdel: "Государственная нотариальная контора города Новоазовск"
+        }]
+      }]
     };
   },
   validations: {
     firstName: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(2)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minLength)(2)
     },
     lastName: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(6)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minLength)(6)
     },
     middleName: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.minLength)(6)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minLength)(6)
     },
     email: {
-      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.email,
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__.required
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.email,
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
     }
   },
   methods: {
     submitForm: function submitForm() {
-      if (this.$v.$invalid) {
-        this.$v.$touch();
-        return;
-      }
+      var _this = this;
 
-      var formData = {
-        userId: Math.floor(Math.random() * 10),
-        fullName: this.firstName + ' ' + this.lastName + ' ' + this.middleName,
-        email: this.email,
-        issue: this.issue_select,
-        department: this.depart_select,
-        note: this.note
-      }; // console.log(this.departments);
-      // for (let i = 0; i < this.departments.length; i++) {
-      //   for (let item in this.departments[i]) {
-      //     console.log(item)
-      //   }
-      // }
-      // for (let i = 0; i < this.departments.length; i++) {
-      //   console.log(this.departments[i]['NamePodrazdel']);
-      //   // for (let q = 0; q < this.departments[i]; q++) {
-      //   //   console.log(this.departments[i][q]);
-      //   // }
-      // }
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var formData;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!_this.$v.$invalid) {
+                  _context.next = 3;
+                  break;
+                }
+
+                _this.$v.$touch();
+
+                return _context.abrupt("return");
+
+              case 3:
+                formData = {
+                  userId: Math.floor(Math.random() * 10),
+                  fio: _this.firstName + " " + _this.lastName + " " + _this.middleName,
+                  email: _this.email,
+                  telephone: _this.telephone,
+                  prichinaObr: _this.issue_select,
+                  idPodr: _this.select2,
+                  textObr: _this.note
+                };
+                _context.prev = 4;
+                _context.next = 7;
+                return _this.$store.dispatch('sendReference', formData);
+
+              case 7:
+                _context.next = 12;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](4);
+                console.log(_context.t0);
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[4, 9]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://127.0.0.1:8000/api/podrazdel').then(function (response) {
-      return _this.departments = response.data.podrazdels;
-    });
-    this.modal = materialize_css__WEBPACK_IMPORTED_MODULE_1___default().Modal.init(this.$refs.modal, {});
-    this.select = materialize_css__WEBPACK_IMPORTED_MODULE_1___default().FormSelect.init(this.$refs.select, {});
-    this.select = materialize_css__WEBPACK_IMPORTED_MODULE_1___default().FormSelect.init(this.$refs.select2, {});
-    this.$error('хохла спросить забыли');
+    // axios
+    //   .get("http://127.0.0.1:8000/api/podrazdel")
+    //   .then((response) => (this.departments = response.data.podrazdels));
+    this.modal = materialize_css__WEBPACK_IMPORTED_MODULE_3___default().Modal.init(this.$refs.modal, {});
+    this.select = materialize_css__WEBPACK_IMPORTED_MODULE_3___default().FormSelect.init(this.$refs.select, {});
+    this.select2 = materialize_css__WEBPACK_IMPORTED_MODULE_3___default().FormSelect.init(this.$refs.select2, {});
+    this.$error("Select все еще не работает");
   }
 });
 
@@ -13281,6 +13420,39 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "input-field col s6" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.telephone,
+                                    expression: "telephone"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "text",
+                                  name: "telephone",
+                                  id: "telephone"
+                                },
+                                domProps: { value: _vm.telephone },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.telephone = $event.target.value
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("label", { attrs: { for: "telephone" } }, [
+                                _vm._v("Номер телефона")
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
                             _c("div", { staticClass: "input-field col s8" }, [
                               _c(
                                 "select",
@@ -13363,12 +13535,11 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.depart_select,
-                                      expression: "depart_select"
+                                      value: _vm.select2,
+                                      expression: "select2"
                                     }
                                   ],
                                   ref: "select2",
-                                  staticClass: "group-select",
                                   on: {
                                     change: function($event) {
                                       var $$selectedVal = Array.prototype.filter
@@ -13382,38 +13553,37 @@ var render = function() {
                                             "_value" in o ? o._value : o.value
                                           return val
                                         })
-                                      _vm.depart_select = $event.target.multiple
+                                      _vm.select2 = $event.target.multiple
                                         ? $$selectedVal
                                         : $$selectedVal[0]
                                     }
                                   }
                                 },
-                                _vm._l(_vm.departments, function(
-                                  department,
-                                  index
-                                ) {
+                                _vm._l(_vm.deps, function(department) {
                                   return _c(
                                     "optgroup",
                                     {
-                                      key: index,
-                                      attrs: { label: department.NameOtdel }
+                                      key: department.id,
+                                      attrs: { label: department.nameOtdel }
                                     },
-                                    [
-                                      _c(
+                                    _vm._l(department.NamePodrazdel, function(
+                                      ref
+                                    ) {
+                                      var NamePodrazdel = ref.NamePodrazdel
+                                      var id = ref.id
+                                      return _c(
                                         "option",
-                                        {
-                                          domProps: {
-                                            value: department.NamePodrazdel
-                                          }
-                                        },
+                                        { key: id, domProps: { value: id } },
                                         [
                                           _vm._v(
-                                            _vm._s(department.NamePodrazdel) +
-                                              " "
+                                            "\n                            " +
+                                              _vm._s(NamePodrazdel) +
+                                              "\n                          "
                                           )
                                         ]
                                       )
-                                    ]
+                                    }),
+                                    0
                                   )
                                 }),
                                 0
@@ -13463,9 +13633,7 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
-                          _vm._m(3),
-                          _vm._v(" "),
-                          _vm._m(4)
+                          _vm._m(3)
                         ]
                       )
                     ])
@@ -13548,14 +13716,6 @@ var staticRenderFns = [
           "\n                Заполните форму для отправки обращения\n              "
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col s12" })
     ])
   },
   function() {

@@ -2,6 +2,7 @@
   <div>
     <Navbar />
     <Sidenav v-model="isOpen" />
+
   </div>
 </template>
 

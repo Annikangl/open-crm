@@ -96,6 +96,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "login",
@@ -127,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
         password: this.password
       };
       console.log(formData);
-      this.$router.push("/");
+      this.$router.push("/admin");
     }
   }
 });
@@ -385,8 +388,29 @@ var render = function() {
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "input-field col s12" }, [
                         _c("input", {
-                          staticClass: "validate",
-                          attrs: { type: "email", name: "email", id: "email" }
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.email,
+                              expression: "email"
+                            }
+                          ],
+                          class: {
+                            invalid:
+                              (_vm.$v.email.$dirty && !_vm.$v.email.required) ||
+                              (_vm.$v.email.$dirty && !_vm.$v.email.email)
+                          },
+                          attrs: { type: "email", name: "email", id: "email" },
+                          domProps: { value: _vm.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.email = $event.target.value
+                            }
+                          }
                         }),
                         _vm._v(" "),
                         _c("label", { attrs: { for: "email" } }, [
@@ -408,11 +432,34 @@ var render = function() {
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "input-field col s12" }, [
                         _c("input", {
-                          staticClass: "validate",
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password,
+                              expression: "password"
+                            }
+                          ],
+                          class: {
+                            invalid:
+                              (_vm.$v.password.$dirty &&
+                                !_vm.$v.password.required) ||
+                              (_vm.$v.password.$dirty &&
+                                !_vm.$v.password.minLength)
+                          },
                           attrs: {
                             type: "password",
                             name: "password",
                             id: "password"
+                          },
+                          domProps: { value: _vm.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.password = $event.target.value
+                            }
                           }
                         }),
                         _vm._v(" "),

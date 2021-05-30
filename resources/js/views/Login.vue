@@ -23,7 +23,9 @@
 
             <div class="row">
               <div class="input-field col s12">
-                <input class="validate" type="email" name="email" id="email" />
+                <input type="email" name="email" id="email" 
+                v-model="email"
+                 :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"/>
                 <label for="email">Логин</label>
               </div>
               <small
@@ -41,7 +43,8 @@
             <div class="row">
               <div class="input-field col s12">
                 <input
-                  class="validate"
+                  :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
+                  v-model="password"
                   type="password"
                   name="password"
                   id="password"
@@ -107,7 +110,7 @@ export default {
       };
 
       console.log(formData);
-      this.$router.push("/");
+      this.$router.push("/admin");
     },
   },
 };
