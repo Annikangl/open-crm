@@ -16,7 +16,11 @@
             border: 1px solid #eee;
           "
         >
-          <form class="col s12" @submit.prevent="submitHandler">
+
+        <div class="errors" v-if="error">
+          Проверьте правильность данных
+        </div>
+          <form class="col s12" >
             <div class="row">
               <div class="col s12"></div>
             </div>
@@ -69,6 +73,7 @@
                   type="submit"
                   name="btn_login"
                   class="col s12 btn waves-effect blue darken-1"
+                  @click.prevent="submitHandler"
                 >
                   Войти
                 </button>
@@ -86,31 +91,59 @@
 </template>
 
 <script>
+import store from '../store';
 import { email, required, minLength } from "vuelidate/lib/validators";
+import axios from 'axios';
 
 export default {
   name: "login",
   data: () => ({
     email: "",
     password: "",
+    error: false,
+  
   }),
   validations: {
     email: { email, required },
     password: { required, minLength: minLength(6) },
   },
   methods: {
-    submitHandler() {
+    async submitHandler() {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
       }
-      const formData = {
-        email: this.email,
-        password: this.password,
-      };
 
-      console.log(formData);
-      this.$router.push("/admin");
+    
+
+      axios.post('api/login',{email:this.email, password:this.password}, {
+        headers: {
+          "Content-type": "application/json"
+        }
+      })
+      .then(res => {
+        if (res.data.status) {
+          this.$router.push('/admin');
+        }
+      })
+
+      .catch(err => {
+        console.log(err.response.data);
+        this.error = true;
+      })
+      
+      // const formData = {
+      //   email: this.email,
+      //   password: this.password,
+      // };
+
+      // try {
+      //     await this.$store.dispatch('login', formData)
+      //     this.$router.push('/admin')
+      // } catch(e) {
+      //   console.log(e)
+      // }
+      
     },
   },
 };

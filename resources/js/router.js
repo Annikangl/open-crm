@@ -23,7 +23,13 @@ const routes = [
         path: "/admin",
         name: 'Admin',
         component: () => import('./views/Admin')
-    }
+    },
+
+    {
+        path: "/admin/create",
+        name: 'create',
+        component: () => import('./views/CreateUser')
+    },
 ];
 
 export default new vueRouter({

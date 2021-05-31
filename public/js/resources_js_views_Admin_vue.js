@@ -86,6 +86,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! materialize-css */ "./node_modules/materialize-css/dist/js/materialize.js");
+/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(materialize_css__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -102,6 +104,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['value'],
   data: function data() {
@@ -112,17 +119,18 @@ __webpack_require__.r(__webpack_exports__);
         exact: true
       }, {
         title: 'Обращения',
-        url: '/admin/#'
+        url: '/admin/references'
       }, {
         title: 'Добавить пользователя',
-        url: '/admin/#'
+        url: ''
       }, {
         title: 'Отделы',
-        url: '/admin/#'
+        url: '/admin/departmens'
       }, {
         title: 'Категории',
-        url: '/admin/#'
-      }]
+        url: '/admin/category'
+      }],
+      modalData: "data-"
     };
   }
 });
@@ -144,6 +152,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(materialize_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_app_AdminNavbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/app/AdminNavbar */ "./resources/js/components/app/AdminNavbar.vue");
 /* harmony import */ var _components_app_Sidenav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/app/Sidenav */ "./resources/js/components/app/Sidenav.vue");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -189,7 +202,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_public_assets_css_index_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.main {\r\n  margin-top: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13032,9 +13045,11 @@ var render = function() {
         "router-link",
         {
           key: link.url,
+          staticClass: "modal-trigger",
           attrs: {
             tag: "li",
             "active-class": "active",
+            "data-target": "modal1",
             to: link.url,
             exact: link.exact
           }
@@ -13043,7 +13058,7 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass: "waves-effect waves-orange pointer",
+              staticClass: "waves-effect waves-blue pointer",
               attrs: { href: "#" }
             },
             [_vm._v(_vm._s(link.title))]
@@ -13090,12 +13105,25 @@ var render = function() {
           },
           expression: "isOpen"
         }
-      })
+      }),
+      _vm._v(" "),
+      _vm._m(0)
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "main" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h5", { staticClass: "title" }, [_vm._v("Главная страница админки")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

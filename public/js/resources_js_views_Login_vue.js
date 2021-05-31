@@ -11,7 +11,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -99,38 +110,84 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "login",
   data: function data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      error: false
     };
   },
   validations: {
     email: {
-      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.email,
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.email,
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required
     },
     password: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.minLength)(6)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__.minLength)(6)
     }
   },
   methods: {
     submitHandler: function submitHandler() {
-      if (this.$v.$invalid) {
-        this.$v.$touch();
-        return;
-      }
+      var _this = this;
 
-      var formData = {
-        email: this.email,
-        password: this.password
-      };
-      console.log(formData);
-      this.$router.push("/admin");
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!_this.$v.$invalid) {
+                  _context.next = 3;
+                  break;
+                }
+
+                _this.$v.$touch();
+
+                return _context.abrupt("return");
+
+              case 3:
+                axios__WEBPACK_IMPORTED_MODULE_2___default().post('api/login', {
+                  email: _this.email,
+                  password: _this.password
+                }, {
+                  headers: {
+                    "Content-type": "application/json"
+                  }
+                }).then(function (res) {
+                  if (res.data.status) {
+                    _this.$router.push('/admin');
+                  }
+                })["catch"](function (err) {
+                  console.log(err.response.data);
+                  _this.error = true;
+                }); // const formData = {
+                //   email: this.email,
+                //   password: this.password,
+                // };
+                // try {
+                //     await this.$store.dispatch('login', formData)
+                //     this.$router.push('/admin')
+                // } catch(e) {
+                //   console.log(e)
+                // }
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     }
   }
 });
@@ -369,17 +426,17 @@ var render = function() {
                 }
               },
               [
+                _vm.error
+                  ? _c("div", { staticClass: "errors" }, [
+                      _vm._v(
+                        "\n         Проверьте правильность данных\n       "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
                 _c(
                   "form",
-                  {
-                    staticClass: "col s12",
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.submitHandler($event)
-                      }
-                    }
-                  },
+                  { staticClass: "col s12" },
                   [
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col s12" })
@@ -498,7 +555,13 @@ var render = function() {
                           {
                             staticClass:
                               "col s12 btn waves-effect blue darken-1",
-                            attrs: { type: "submit", name: "btn_login" }
+                            attrs: { type: "submit", name: "btn_login" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.submitHandler($event)
+                              }
+                            }
                           },
                           [_vm._v("\n                 Войти\n               ")]
                         )

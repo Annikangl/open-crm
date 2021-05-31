@@ -6,25 +6,32 @@
       :key="link.url"
       tag="li"
       active-class="active"
+      data-target="modal1"
+      class="modal-trigger"
       :to="link.url"
       :exact="link.exact"
     >
-      <a href="#" class="waves-effect waves-orange pointer">{{link.title}}</a>
+      <a href="#" class="waves-effect waves-blue pointer">{{link.title}}</a>
     </router-link>
   </ul>
+
+ 
 </template>
 
 <script>
+import M from "materialize-css";
 export default {
   props: ['value'],
   data: () => ({
     links: [
       {title: 'Главная', url: '/admin', exact: true},
-      {title: 'Обращения', url: '/admin/#'},
-      {title: 'Добавить пользователя', url: '/admin/#'},
-      {title: 'Отделы', url: '/admin/#'},
-      {title: 'Категории', url: '/admin/#'}
-    ]
+      {title: 'Обращения', url: '/admin/references'},
+      {title: 'Добавить пользователя', url: ''},
+      {title: 'Отделы', url: '/admin/departmens'},
+      {title: 'Категории', url: '/admin/category'}
+    ],
+
+    modalData: "data-"
   })
 }
 </script>

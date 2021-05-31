@@ -3,6 +3,11 @@
     <Navbar />
     <Sidenav v-model="isOpen" />
 
+    <section class="main">
+      <div class="container">
+        <h5 class="title">Главная страница админки</h5>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -25,4 +30,8 @@ export default {
 
 <style>
 @import "/assets/css/index.css";
+
+.main {
+  margin-top: 100px;
+}
 </style>

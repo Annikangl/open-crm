@@ -188,7 +188,7 @@
                                 id,
                               } in department.NamePodrazdel"
                               :key="id"
-                              :value="id"
+                              :value="department.id"
                             >
                               {{ NamePodrazdel }}
                             </option>
@@ -228,7 +228,7 @@
                   </div> -->
                     <div class="row">
                       <div class="form-actions">
-                        <button type="submit" class="btn">Отправить</button>
+                        <button type="submit" class="btn" @click.prevent="sendReferense">Отправить</button>
                       </div>
                     </div>
                   </form>
@@ -316,30 +316,60 @@ export default {
   },
 
   methods: {
-    async submitForm() {
+    sendReferense() {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
       }
 
-      const formData = {
-        userId: Math.floor(Math.random() * 10),
-        fio: this.firstName + " " + this.lastName + " " + this.middleName,
-        email: this.email,
-        telephone: this.telephone,
-        prichinaObr: this.issue_select,
-        idPodr: this.select2,
-        textObr: this.note,
-      };
+      axios.post('api/references',{
+          FIO: this.firstName + this.lastName + this.middleName,
+          email:this.email,
+          telephone: this.telephone,
+          prichinaObr: this.issue_select,
+          textObr: this.note,
+          idPodr: this.select2
+        }, 
+        { headers: {
+          "Content-type": "application/json"
+        }
+      })
+      .then(res => {
+        if (res.data.status) {
+          this.$router.push('/admin');
+        }
+      })
 
-      try {
-          await this.$store.dispatch('sendReference', formData)
-          // this.$router.push('/admin')
-      } catch(e) {
-        console.log(e);
-      }
+      .catch(err => {
+        console.log(err.response.data);
+        console.log(this.select2);
+        this.error = true;
+      })
+    }
+    // async submitForm() {
+    //   if (this.$v.$invalid) {
+    //     this.$v.$touch();
+    //     return;
+    //   }
+
+    //   const formData = {
+    //     // userId: Math.floor(Math.random() * 10),
+    //     FIO: this.firstName + " " + this.lastName + " " + this.middleName,
+    //     email: this.email,
+    //     telephone: this.telephone,
+    //     prichinaObr: this.issue_select,
+    //     idPodr: this.select2,
+    //     textObr: this.note,
+    //   };
+
+    //   try {
+    //       await this.$store.dispatch('sendReference', formData)
+    //       // this.$router.push('/admin')
+    //   } catch(e) {
+    //     console.log(e);
+    //   }
       
-    },
+    // },
   },
 
   mounted() {

@@ -36,22 +36,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
-/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! materialize-css */ "./node_modules/materialize-css/dist/js/materialize.js");
-/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(materialize_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_app_Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/app/Navbar */ "./resources/js/components/app/Navbar.vue");
-/* harmony import */ var _components_app_Modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/app/Modal */ "./resources/js/components/app/Modal.vue");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! materialize-css */ "./node_modules/materialize-css/dist/js/materialize.js");
+/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(materialize_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_app_Navbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/app/Navbar */ "./resources/js/components/app/Navbar.vue");
+/* harmony import */ var _components_app_Modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/app/Modal */ "./resources/js/components/app/Modal.vue");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 //
 //
 //
@@ -305,8 +297,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Home",
   components: {
-    Navbar: _components_app_Navbar__WEBPACK_IMPORTED_MODULE_4__.default,
-    Modal: _components_app_Modal__WEBPACK_IMPORTED_MODULE_5__.default
+    Navbar: _components_app_Navbar__WEBPACK_IMPORTED_MODULE_3__.default,
+    Modal: _components_app_Modal__WEBPACK_IMPORTED_MODULE_4__.default
   },
   data: function data() {
     return {
@@ -413,80 +405,81 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   validations: {
     firstName: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minLength)(2)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(2)
     },
     lastName: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minLength)(6)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(6)
     },
     middleName: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.minLength)(6)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.minLength)(6)
     },
     email: {
-      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.email,
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.email,
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__.required
     }
   },
   methods: {
-    submitForm: function submitForm() {
+    sendReferense: function sendReferense() {
       var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var formData;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                if (!_this.$v.$invalid) {
-                  _context.next = 3;
-                  break;
-                }
+      if (this.$v.$invalid) {
+        this.$v.$touch();
+        return;
+      }
 
-                _this.$v.$touch();
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/references', {
+        FIO: this.firstName + this.lastName + this.middleName,
+        email: this.email,
+        telephone: this.telephone,
+        prichinaObr: this.issue_select,
+        textObr: this.note,
+        idPodr: this.select2
+      }, {
+        headers: {
+          "Content-type": "application/json"
+        }
+      }).then(function (res) {
+        if (res.data.status) {
+          _this.$router.push('/admin');
+        }
+      })["catch"](function (err) {
+        console.log(err.response.data);
+        console.log(_this.select2);
+        _this.error = true;
+      });
+    } // async submitForm() {
+    //   if (this.$v.$invalid) {
+    //     this.$v.$touch();
+    //     return;
+    //   }
+    //   const formData = {
+    //     // userId: Math.floor(Math.random() * 10),
+    //     FIO: this.firstName + " " + this.lastName + " " + this.middleName,
+    //     email: this.email,
+    //     telephone: this.telephone,
+    //     prichinaObr: this.issue_select,
+    //     idPodr: this.select2,
+    //     textObr: this.note,
+    //   };
+    //   try {
+    //       await this.$store.dispatch('sendReference', formData)
+    //       // this.$router.push('/admin')
+    //   } catch(e) {
+    //     console.log(e);
+    //   }
+    // },
 
-                return _context.abrupt("return");
-
-              case 3:
-                formData = {
-                  userId: Math.floor(Math.random() * 10),
-                  fio: _this.firstName + " " + _this.lastName + " " + _this.middleName,
-                  email: _this.email,
-                  telephone: _this.telephone,
-                  prichinaObr: _this.issue_select,
-                  idPodr: _this.select2,
-                  textObr: _this.note
-                };
-                _context.prev = 4;
-                _context.next = 7;
-                return _this.$store.dispatch('sendReference', formData);
-
-              case 7:
-                _context.next = 12;
-                break;
-
-              case 9:
-                _context.prev = 9;
-                _context.t0 = _context["catch"](4);
-                console.log(_context.t0);
-
-              case 12:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[4, 9]]);
-      }))();
-    }
   },
   mounted: function mounted() {
     // axios
     //   .get("http://127.0.0.1:8000/api/podrazdel")
     //   .then((response) => (this.departments = response.data.podrazdels));
-    this.modal = materialize_css__WEBPACK_IMPORTED_MODULE_3___default().Modal.init(this.$refs.modal, {});
-    this.select = materialize_css__WEBPACK_IMPORTED_MODULE_3___default().FormSelect.init(this.$refs.select, {});
-    this.select2 = materialize_css__WEBPACK_IMPORTED_MODULE_3___default().FormSelect.init(this.$refs.select2, {});
+    this.modal = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().Modal.init(this.$refs.modal, {});
+    this.select = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().FormSelect.init(this.$refs.select, {});
+    this.select2 = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().FormSelect.init(this.$refs.select2, {});
     this.$error("Select все еще не работает");
   }
 });
@@ -13573,7 +13566,10 @@ var render = function() {
                                       var id = ref.id
                                       return _c(
                                         "option",
-                                        { key: id, domProps: { value: id } },
+                                        {
+                                          key: id,
+                                          domProps: { value: department.id }
+                                        },
                                         [
                                           _vm._v(
                                             "\n                            " +
@@ -13633,7 +13629,24 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
-                          _vm._m(3)
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "form-actions" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn",
+                                  attrs: { type: "submit" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.sendReferense($event)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Отправить")]
+                              )
+                            ])
+                          ])
                         ]
                       )
                     ])
@@ -13715,18 +13728,6 @@ var staticRenderFns = [
         _vm._v(
           "\n                Заполните форму для отправки обращения\n              "
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "form-actions" }, [
-        _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
-          _vm._v("Отправить")
-        ])
       ])
     ])
   }
