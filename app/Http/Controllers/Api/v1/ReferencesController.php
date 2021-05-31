@@ -48,6 +48,7 @@ class ReferencesController extends Controller
             $request->all(),
             [
                 "FIO"=>["required"],
+                "email"=>["required"],
                 "telephone"=>["required"],
                 "prichinaObr"=>["required"],
                 "textObr"=>["required"],
@@ -62,6 +63,7 @@ class ReferencesController extends Controller
             }
             $post= references::create([
                 "FIO" => $request->FIO,
+                "email" => $request->email,
                 "telephone" => $request->telephone,
                 "prichinaObr" => $request->prichinaObr,
                 "textObr" => $request->textObr,
