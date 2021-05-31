@@ -10,6 +10,9 @@ use App\Models\notarial;
 class podrazdel extends Model
 {
     use HasFactory;
+
+
+    
     // protected $fillable = ['idOrganMinusta','idTerritorial','idNotarial'];
     protected $fillable = ['name'];
 
@@ -23,3 +26,4 @@ class podrazdel extends Model
     }
  
 }
+

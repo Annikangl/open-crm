@@ -40,9 +40,11 @@ class TerritorialController extends Controller
         $validatior = Validator::make(
             $request->all(),
             [
+
                 "idOtdel"=>["required"],
                 "gorod"=>["required"],
                 "name"=>["required"]
+
             ]);
 
             if ($validatior->fails()) {
@@ -52,9 +54,11 @@ class TerritorialController extends Controller
                 ];
             }
             $post= territorial::create([
+
                 "idOtdel" => $request->idOtdel,
                 "gorod" => $request->gorod,
                 "name" => $request->structura
+
             ]);
             return[
                 "status" => true,

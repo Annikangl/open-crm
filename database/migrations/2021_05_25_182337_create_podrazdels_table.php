@@ -15,6 +15,7 @@ class CreatePodrazdelsTable extends Migration
     {
         Schema::create('podrazdels', function (Blueprint $table) {
             $table->integer('id');
+
             $table->integer('idOrganMinusta');
             $table->integer('idTerritorial');
             $table->integer('idNotarial');

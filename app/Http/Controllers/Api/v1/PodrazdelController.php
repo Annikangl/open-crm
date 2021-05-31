@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+
+
 use App\Http\Resources\NamePodrazdelCollection;
 use App\Models\justice;
 use App\Models\notarial;
@@ -11,6 +13,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Http\Resources\podrazdel as podrazdelResource;
 use App\Http\Resources\podrazdelCollection;
+
 
 class PodrazdelController extends Controller
 {
@@ -21,7 +24,8 @@ class PodrazdelController extends Controller
      */
     public function index()
     {
-       
+
+        // return podrazdel::all();
 
         $podrazdels = podrazdel::all();
 
@@ -47,6 +51,7 @@ class PodrazdelController extends Controller
         //     ];
         // }
         // return $this->podrazdelList;
+
     }
 
     /**

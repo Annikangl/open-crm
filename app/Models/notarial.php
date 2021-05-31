@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class notarial extends Model
 {
     use HasFactory;
+
+
     protected $fillable = ['idOtdel','name'];
+
 }
