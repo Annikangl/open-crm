@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
         url: '/admin/references'
       }, {
         title: 'Добавить пользователя',
-        url: ''
+        url: '/admin/create'
       }, {
         title: 'Отделы',
         url: '/admin/departmens'
@@ -150,8 +150,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! materialize-css */ "./node_modules/materialize-css/dist/js/materialize.js");
 /* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(materialize_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_app_AdminNavbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/app/AdminNavbar */ "./resources/js/components/app/AdminNavbar.vue");
-/* harmony import */ var _components_app_Sidenav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/app/Sidenav */ "./resources/js/components/app/Sidenav.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_app_AdminNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/app/AdminNavbar */ "./resources/js/components/app/AdminNavbar.vue");
+/* harmony import */ var _components_app_Sidenav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/app/Sidenav */ "./resources/js/components/app/Sidenav.vue");
 //
 //
 //
@@ -165,18 +167,92 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Navbar: _components_app_AdminNavbar__WEBPACK_IMPORTED_MODULE_1__.default,
-    Sidenav: _components_app_Sidenav__WEBPACK_IMPORTED_MODULE_2__.default
+    Navbar: _components_app_AdminNavbar__WEBPACK_IMPORTED_MODULE_2__.default,
+    Sidenav: _components_app_Sidenav__WEBPACK_IMPORTED_MODULE_3__.default
   },
   data: function data() {
     return {
-      isOpen: true
+      isOpen: true,
+      collapsible: null,
+      errors: false,
+      references: "",
+      dropdown2: null
     };
+  },
+  methods: {
+    getData: function getData() {
+      console.log(this.references);
+    },
+    dropActions: function dropActions() {
+      this.drop = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Dropdown.init(this.$refs.drop, {
+        constrainWidth: false
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/references").then(function (response) {
+      return _this.references = response.data;
+    })["catch"](function (error) {
+      console.log(error);
+      _this.errors = true;
+    });
+    this.collapsible = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Collapsible.init(this.$refs.collapsible, {});
+    this.dropdown2 = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Dropdown.init(this.$refs.dropdown, {
+      constrainWidth: false
+    });
   }
 });
 
@@ -202,7 +278,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_public_assets_css_index_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.main {\r\n  margin-top: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.main {\r\n  margin-top: 100px;\n}\n.collapsible-body_top,\r\n.collapsible-body-footer {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  color: #000;\r\n  font-size: 12px;\r\n  font-weight: bold;\n}\n.collapsible-body_top span {\r\n  color: rgb(158, 152, 152);\n}\n.content-center {\r\n  padding: 5px 0;\r\n  font-weight: bold;\n}\n.text-ref span {\r\n  font-weight: normal;\n}\n.footer-left span {\r\n  font-weight: normal;\n}\n.user-email,\r\n.user-phone {\r\n  font-weight: bold;\r\n  font-size: 12px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -226,7 +302,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".empty-layout {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-flex-direction: column;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-top: 5rem;\r\n    height: 100vh\r\n}\r\n\r\n.auth-card {\r\n    width: 500px\r\n}\r\n\r\n.auth-submit {\r\n    width: 100%\r\n}\r\n\r\n.helper-text.invalid {\r\n    color: #f44336\r\n}\r\n\r\n.app-page {\r\n    padding: 2rem\r\n}\r\n\r\n.app-main-layout {\r\n    position: relative;\r\n    min-height: 100vh\r\n}\r\n\r\n.app-sidenav {\r\n    padding-top: 5px;\r\n    position: absolute;\r\n    top: 64px;\r\n    width: 250px;\r\n    transition: transform .3s;\r\n    transition: transform .3s, -webkit-transform .3s;\r\n    bottom: 0 !important;\r\n    height: auto !important\r\n}\r\n\r\n.app-sidenav.open {\r\n    -webkit-transform: translateX(0);\r\n    transform: translateX(0)\r\n}\r\n\r\n.navbar {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 64px !important;\r\n    padding: 0 2rem;\r\n    z-index: 1000\r\n}\r\n\r\n.nav-wrapper {\r\n    -webkit-justify-content: space-between;\r\n    -ms-flex-pack: justify;\r\n    justify-content: space-between\r\n}\r\n\r\n.nav-wrapper,\r\n.navbar-left {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center\r\n}\r\n\r\n.navbar-left>a {\r\n    margin-right: 1rem\r\n}\r\n\r\n.app-content {\r\n    padding-top: 64px;\r\n    padding-left: 250px;\r\n    transition: padding-left .3s;\r\n    position: relative\r\n}\r\n\r\n.app-content.full {\r\n    padding-left: 0\r\n}\r\n\r\n.page-title {\r\n    -webkit-justify-content: space-between;\r\n    -ms-flex-pack: justify;\r\n    justify-content: space-between;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-bottom: 1rem;\r\n    border-bottom: solid 1px rgba(51, 51, 51, .12)\r\n}\r\n\r\n.page-title a {\r\n    color: #000;\r\n    opacity: .8\r\n}\r\n\r\n.page-subtitle h4,\r\n.page-title h3,\r\n.page-title h4 {\r\n    margin: 0;\r\n    font-size: 2rem\r\n}\r\n\r\n.page-subtitle h4,\r\n.page-title {\r\n    margin-bottom: 2rem\r\n}\r\n\r\n.app-loader,\r\n.currency-line,\r\n.page-title {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex\r\n}\r\n\r\n.app-loader {\r\n    width: 100%;\r\n    -webkit-justify-content: center;\r\n    -ms-flex-pack: center;\r\n    justify-content: center;\r\n    padding-top: 2rem\r\n}\r\n\r\n.currency-line {\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    border-bottom: 2px solid #fff;\r\n    padding-bottom: 1rem;\r\n    padding-top: 1.5rem\r\n}\r\n\r\n.currency-line span {\r\n    font-size: 1.5rem\r\n}\r\n\r\n.bill-card {\r\n    height: 310px\r\n}\r\n\r\n.pointer {\r\n    cursor: pointer\r\n}\r\n\r\n.form {\r\n    max-width: 500px\r\n}\r\n\r\n.breadcrumb-wrap,\r\n.breadcrumb-wrap a,\r\n.breadcrumb-wrap a:before {\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center\r\n}\r\n\r\n.breadcrumb-wrap {\r\n    position: relative;\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex\r\n}\r\n\r\n.breadcrumb-wrap a,\r\n.breadcrumb-wrap a:before {\r\n    display: -webkit-inline-flex;\r\n    display: -ms-inline-flexbox;\r\n    display: inline-flex;\r\n    color: rgba(0, 0, 0, .7) !important\r\n}\r\n\r\n.history-chart {\r\n    max-width: 600px;\r\n    margin: 0 auto\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".empty-layout {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-flex-direction: column;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-top: 5rem;\r\n    height: 100vh\r\n}\r\n\r\n.auth-card {\r\n    width: 500px\r\n}\r\n\r\n.auth-submit {\r\n    width: 100%\r\n}\r\n\r\n.helper-text.invalid {\r\n    color: #f44336\r\n}\r\n\r\n.app-page {\r\n    padding: 2rem\r\n}\r\n.main {\r\n    margin-top: 100px;\r\n  }\r\n\r\n.app-main-layout {\r\n    position: relative;\r\n    min-height: 100vh\r\n}\r\n\r\n.app-sidenav {\r\n    padding-top: 5px;\r\n    position: absolute;\r\n    top: 64px;\r\n    width: 250px;\r\n    transition: transform .3s;\r\n    transition: transform .3s, -webkit-transform .3s;\r\n    bottom: 0 !important;\r\n    height: auto !important\r\n}\r\n\r\n.app-sidenav.open {\r\n    -webkit-transform: translateX(0);\r\n    transform: translateX(0)\r\n}\r\n\r\n.navbar {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 64px !important;\r\n    padding: 0 2rem;\r\n    z-index: 1000\r\n}\r\n\r\n.nav-wrapper {\r\n    -webkit-justify-content: space-between;\r\n    -ms-flex-pack: justify;\r\n    justify-content: space-between\r\n}\r\n\r\n.nav-wrapper,\r\n.navbar-left {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center\r\n}\r\n\r\n.navbar-left>a {\r\n    margin-right: 1rem\r\n}\r\n\r\n.app-content {\r\n    padding-top: 64px;\r\n    padding-left: 250px;\r\n    transition: padding-left .3s;\r\n    position: relative\r\n}\r\n\r\n.app-content.full {\r\n    padding-left: 0\r\n}\r\n\r\n.page-title {\r\n    -webkit-justify-content: space-between;\r\n    -ms-flex-pack: justify;\r\n    justify-content: space-between;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-bottom: 1rem;\r\n    border-bottom: solid 1px rgba(51, 51, 51, .12)\r\n}\r\n\r\n.page-title a {\r\n    color: #000;\r\n    opacity: .8\r\n}\r\n\r\n.page-subtitle h4,\r\n.page-title h3,\r\n.page-title h4 {\r\n    margin: 0;\r\n    font-size: 2rem\r\n}\r\n\r\n.page-subtitle h4,\r\n.page-title {\r\n    margin-bottom: 2rem\r\n}\r\n\r\n.app-loader,\r\n.currency-line,\r\n.page-title {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex\r\n}\r\n\r\n.app-loader {\r\n    width: 100%;\r\n    -webkit-justify-content: center;\r\n    -ms-flex-pack: center;\r\n    justify-content: center;\r\n    padding-top: 2rem\r\n}\r\n\r\n.currency-line {\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    border-bottom: 2px solid #fff;\r\n    padding-bottom: 1rem;\r\n    padding-top: 1.5rem\r\n}\r\n\r\n.currency-line span {\r\n    font-size: 1.5rem\r\n}\r\n\r\n.bill-card {\r\n    height: 310px\r\n}\r\n\r\n.pointer {\r\n    cursor: pointer\r\n}\r\n\r\n.form {\r\n    max-width: 500px\r\n}\r\n\r\n.breadcrumb-wrap,\r\n.breadcrumb-wrap a,\r\n.breadcrumb-wrap a:before {\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center\r\n}\r\n\r\n.breadcrumb-wrap {\r\n    position: relative;\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex\r\n}\r\n\r\n.breadcrumb-wrap a,\r\n.breadcrumb-wrap a:before {\r\n    display: -webkit-inline-flex;\r\n    display: -ms-inline-flexbox;\r\n    display: inline-flex;\r\n    color: rgba(0, 0, 0, .7) !important\r\n}\r\n\r\n.history-chart {\r\n    max-width: 600px;\r\n    margin: 0 auto\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13107,7 +13183,80 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm._m(0)
+      _c("section", { staticClass: "main" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("h5", { staticClass: "title" }, [_vm._v("Список обращений")]),
+          _vm._v(" "),
+          _c("button", { staticClass: "btn", on: { click: _vm.getData } }, [
+            _vm._v("Test api")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "ul",
+              { ref: "collapsible", staticClass: "collapsible" },
+              _vm._l(_vm.references, function(reference) {
+                return _c("li", { key: reference.id }, [
+                  _c("div", { staticClass: "collapsible-header" }, [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("person")
+                    ]),
+                    _vm._v(_vm._s(reference.prichinaObr) + "\n            ")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "collapsible-body" }, [
+                    _c("div", { staticClass: "collapsible-body_top" }, [
+                      _c("div", { staticClass: "top_left" }, [
+                        _vm._v("\n                  ФИО заявителя: "),
+                        _c("span", [_vm._v(_vm._s(reference.FIO))])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "top-right" }, [
+                        _vm._v("\n                  Дата\n                  "),
+                        _c("span", { staticClass: "date-ref" }, [
+                          _vm._v(_vm._s(reference.created_at))
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "collapsible-body-content" }, [
+                      _c("div", { staticClass: "content-center" }, [
+                        _c("p", { staticClass: "text-ref" }, [
+                          _vm._v("\n                    Текст обращения "),
+                          _c("span", [
+                            _vm._v(" " + _vm._s(reference.textObr) + " ")
+                          ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "collapsible-body-footer" }, [
+                      _c("div", { staticClass: "footer-left" }, [
+                        _c("div", { staticClass: "user-email" }, [
+                          _vm._v("\n                    Эл.адрес   "),
+                          _c("span", [_vm._v(_vm._s(reference.email))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "user-phone" }, [
+                          _vm._v(
+                            "\n                    Контактный тел. \n                    "
+                          ),
+                          _c("span", [
+                            _vm._v(" " + _vm._s(reference.telephone))
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(0, true)
+                    ])
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
     ],
     1
   )
@@ -13117,10 +13266,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "main" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h5", { staticClass: "title" }, [_vm._v("Главная страница админки")])
-      ])
+    return _c("div", { staticClass: "footer-right" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn dropdown-trigger",
+          attrs: { "data-target": "dropdown1" }
+        },
+        [
+          _c("i", { staticClass: "material-icons right" }, [_vm._v("edit")]),
+          _vm._v("Изменить")
+        ]
+      )
     ])
   }
 ]

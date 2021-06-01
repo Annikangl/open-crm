@@ -431,7 +431,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/references', {
-        FIO: this.firstName + this.lastName + this.middleName,
+        FIO: this.firstName + ' ' + this.lastName + ' ' + this.middleName,
         email: this.email,
         telephone: this.telephone,
         prichinaObr: this.issue_select,

@@ -323,7 +323,7 @@ export default {
       }
 
       axios.post('api/references',{
-          FIO: this.firstName + this.lastName + this.middleName,
+          FIO: this.firstName + ' ' + this.lastName + ' ' + this.middleName,
           email:this.email,
           telephone: this.telephone,
           prichinaObr: this.issue_select,

@@ -5,7 +5,52 @@
 
     <section class="main">
       <div class="container">
-        <h5 class="title">Главная страница админки</h5>
+        <h5 class="title">Список обращений</h5>
+        <button class="btn" @click="getData">Test api</button>
+        <div class="row">
+          <ul class="collapsible" ref="collapsible">
+            <li v-for="reference in references" :key="reference.id">
+              <div class="collapsible-header">
+                <i class="material-icons">person</i
+                >{{ reference.prichinaObr }}
+              </div>
+              <div class="collapsible-body">
+                <div class="collapsible-body_top">
+                  <div class="top_left">
+                    ФИО заявителя: <span>{{ reference.FIO }}</span>
+                  </div>
+                  <div class="top-right">
+                    Дата
+                    <span class="date-ref">{{ reference.created_at }}</span>
+                  </div>
+                </div>
+
+                <div class="collapsible-body-content">
+                  <div class="content-center">
+                    <p class="text-ref">
+                      Текст обращения <span> {{ reference.textObr }} </span>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="collapsible-body-footer">
+                  <div class="footer-left">
+                    <div class="user-email">
+                      Эл.адрес &nbsp; <span>{{ reference.email }}</span>
+                    </div>
+                    <div class="user-phone">
+                      Контактный тел.&nbsp;
+                      <span> {{ reference.telephone }}</span>
+                    </div>
+                  </div>
+                  <div class="footer-right">
+                    <button class="btn dropdown-trigger"  data-target="dropdown1"><i class="material-icons right">edit</i>Изменить</button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   </div>
@@ -13,6 +58,7 @@
 
 <script>
 import M from "materialize-css";
+import axios from "axios";
 import Navbar from "../components/app/AdminNavbar";
 import Sidenav from "../components/app/Sidenav";
 
@@ -23,8 +69,38 @@ export default {
   },
 
   data: () => ({
-    isOpen: true
+    isOpen: true,
+    collapsible: null,
+    errors: false,
+    references: "",
+    dropdown2: null,
   }),
+
+  methods: {
+    getData() {
+      console.log(this.references);
+    },
+
+    dropActions() {
+      this.drop = M.Dropdown.init(this.$refs.drop, {constrainWidth: false});
+    }
+  },
+
+  mounted() {
+    axios
+      .get("/api/references")
+      .then((response) => (this.references = response.data))
+      .catch((error) => {
+        console.log(error);
+        this.errors = true;
+      });
+
+    this.collapsible = M.Collapsible.init(this.$refs.collapsible, {});
+    this.dropdown2 = M.Dropdown.init(this.$refs.dropdown, {
+      constrainWidth: false
+    })
+    
+  },
 };
 </script>
 
@@ -33,5 +109,37 @@ export default {
 
 .main {
   margin-top: 100px;
+}
+
+.collapsible-body_top,
+.collapsible-body-footer {
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.collapsible-body_top span {
+  color: rgb(158, 152, 152);
+}
+
+.content-center {
+  padding: 5px 0;
+  font-weight: bold;
+}
+
+.text-ref span {
+  font-weight: normal;
+}
+
+.footer-left span {
+  font-weight: normal;
+}
+
+.user-email,
+.user-phone {
+  font-weight: bold;
+  font-size: 12px;
 }
 </style>

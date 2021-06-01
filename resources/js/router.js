@@ -28,6 +28,7 @@ const routes = [
     {
         path: "/admin/create",
         name: 'create',
+        meta: {layout: 'main'},
         component: () => import('./views/CreateUser')
     },
 ];

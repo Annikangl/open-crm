@@ -8,15 +8,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/materialize.min.css') }}">
 
-    {{-- <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}"> --}}
 </head>
 <body>
     
 <div id="app">
-    <router-view></router-view>
+    <router-view>
+       
+    </router-view>
 </div>
-    {{-- <script src="{{ asset('assets/js/materialize.min.js') }}"></script> --}}
    
-    <script src="./js/app.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>

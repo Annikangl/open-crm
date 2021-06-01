@@ -26,7 +26,7 @@ export default {
     links: [
       {title: 'Главная', url: '/admin', exact: true},
       {title: 'Обращения', url: '/admin/references'},
-      {title: 'Добавить пользователя', url: ''},
+      {title: 'Добавить пользователя', url: '/admin/create'},
       {title: 'Отделы', url: '/admin/departmens'},
       {title: 'Категории', url: '/admin/category'}
     ],
