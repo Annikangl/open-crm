@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <Navbar />
-    <Modal />
+
     <div class="app-content">
       <section class="content">
         <div class="container">
@@ -342,7 +342,6 @@ export default {
 
       .catch(err => {
         console.log(err.response.data);
-        console.log(this.select2);
         this.error = true;
       })
     }

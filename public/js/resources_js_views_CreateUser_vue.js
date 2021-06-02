@@ -167,6 +167,108 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -178,8 +280,55 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      isOpen: true
+      isOpen: true,
+      modalNewUser: null,
+      modalDepartment: null,
+      depName: "",
+      firstName: "",
+      lastName: "",
+      middleName: "",
+      email: "",
+      password: "",
+      passwordVerif: ""
     };
+  },
+  methods: {
+    addUser: function addUser() {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/register', {
+        name: this.firstName + ' ' + this.lastName + ' ' + this.middleName,
+        email: this.email,
+        password: this.password
+      }, {
+        headers: {
+          "Content-type": "application/json"
+        }
+      }).then(function (res) {
+        if (res.data.status) {
+          alert('Пользователь добавлен');
+        }
+      })["catch"](function (err) {
+        console.log(err.response.data);
+      });
+    },
+    addDepartment: function addDepartment() {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/podrazdel', {
+        nameOtdel: this.depName
+      }, {
+        headers: {
+          "Content-type": "application/json"
+        }
+      }).then(function (res) {
+        if (res.data.status) {
+          alert('Отдел успешно добавлен');
+        }
+      })["catch"](function (err) {
+        console.log(err.response.data);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.modalNewUser = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Modal.init(this.$refs.modal, {});
+    this.modalDepartment = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Modal.init(this.$refs.modalDepartment, {});
   }
 });
 
@@ -205,7 +354,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_public_assets_css_index_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -229,7 +378,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".empty-layout {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-flex-direction: column;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-top: 5rem;\r\n    height: 100vh\r\n}\r\n\r\n.auth-card {\r\n    width: 500px\r\n}\r\n\r\n.auth-submit {\r\n    width: 100%\r\n}\r\n\r\n.helper-text.invalid {\r\n    color: #f44336\r\n}\r\n\r\n.app-page {\r\n    padding: 2rem\r\n}\r\n.main {\r\n    margin-top: 100px;\r\n  }\r\n\r\n.app-main-layout {\r\n    position: relative;\r\n    min-height: 100vh\r\n}\r\n\r\n.app-sidenav {\r\n    padding-top: 5px;\r\n    position: absolute;\r\n    top: 64px;\r\n    width: 250px;\r\n    transition: transform .3s;\r\n    transition: transform .3s, -webkit-transform .3s;\r\n    bottom: 0 !important;\r\n    height: auto !important\r\n}\r\n\r\n.app-sidenav.open {\r\n    -webkit-transform: translateX(0);\r\n    transform: translateX(0)\r\n}\r\n\r\n.navbar {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 64px !important;\r\n    padding: 0 2rem;\r\n    z-index: 1000\r\n}\r\n\r\n.nav-wrapper {\r\n    -webkit-justify-content: space-between;\r\n    -ms-flex-pack: justify;\r\n    justify-content: space-between\r\n}\r\n\r\n.nav-wrapper,\r\n.navbar-left {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center\r\n}\r\n\r\n.navbar-left>a {\r\n    margin-right: 1rem\r\n}\r\n\r\n.app-content {\r\n    padding-top: 64px;\r\n    padding-left: 250px;\r\n    transition: padding-left .3s;\r\n    position: relative\r\n}\r\n\r\n.app-content.full {\r\n    padding-left: 0\r\n}\r\n\r\n.page-title {\r\n    -webkit-justify-content: space-between;\r\n    -ms-flex-pack: justify;\r\n    justify-content: space-between;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-bottom: 1rem;\r\n    border-bottom: solid 1px rgba(51, 51, 51, .12)\r\n}\r\n\r\n.page-title a {\r\n    color: #000;\r\n    opacity: .8\r\n}\r\n\r\n.page-subtitle h4,\r\n.page-title h3,\r\n.page-title h4 {\r\n    margin: 0;\r\n    font-size: 2rem\r\n}\r\n\r\n.page-subtitle h4,\r\n.page-title {\r\n    margin-bottom: 2rem\r\n}\r\n\r\n.app-loader,\r\n.currency-line,\r\n.page-title {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex\r\n}\r\n\r\n.app-loader {\r\n    width: 100%;\r\n    -webkit-justify-content: center;\r\n    -ms-flex-pack: center;\r\n    justify-content: center;\r\n    padding-top: 2rem\r\n}\r\n\r\n.currency-line {\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    border-bottom: 2px solid #fff;\r\n    padding-bottom: 1rem;\r\n    padding-top: 1.5rem\r\n}\r\n\r\n.currency-line span {\r\n    font-size: 1.5rem\r\n}\r\n\r\n.bill-card {\r\n    height: 310px\r\n}\r\n\r\n.pointer {\r\n    cursor: pointer\r\n}\r\n\r\n.form {\r\n    max-width: 500px\r\n}\r\n\r\n.breadcrumb-wrap,\r\n.breadcrumb-wrap a,\r\n.breadcrumb-wrap a:before {\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center\r\n}\r\n\r\n.breadcrumb-wrap {\r\n    position: relative;\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex\r\n}\r\n\r\n.breadcrumb-wrap a,\r\n.breadcrumb-wrap a:before {\r\n    display: -webkit-inline-flex;\r\n    display: -ms-inline-flexbox;\r\n    display: inline-flex;\r\n    color: rgba(0, 0, 0, .7) !important\r\n}\r\n\r\n.history-chart {\r\n    max-width: 600px;\r\n    margin: 0 auto\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".empty-layout {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-flex-direction: column;\n    -ms-flex-direction: column;\n    flex-direction: column;\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center;\n    padding-top: 5rem;\n    height: 100vh\n}\n\n.auth-card {\n    width: 500px\n}\n\n.auth-submit {\n    width: 100%\n}\n\n.helper-text.invalid {\n    color: #f44336\n}\n\n.app-page {\n    padding: 2rem\n}\n.main {\n    margin-top: 100px;\n  }\n\n.app-main-layout {\n    position: relative;\n    min-height: 100vh\n}\n\n.app-sidenav {\n    padding-top: 5px;\n    position: absolute;\n    top: 64px;\n    width: 250px;\n    transition: transform .3s;\n    transition: transform .3s, -webkit-transform .3s;\n    bottom: 0 !important;\n    height: auto !important\n}\n\n.app-sidenav.open {\n    -webkit-transform: translateX(0);\n    transform: translateX(0)\n}\n\n.navbar {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 64px !important;\n    padding: 0 2rem;\n    z-index: 1000\n}\n\n.nav-wrapper {\n    -webkit-justify-content: space-between;\n    -ms-flex-pack: justify;\n    justify-content: space-between\n}\n\n.nav-wrapper,\n.navbar-left {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center\n}\n\n.navbar-left>a {\n    margin-right: 1rem\n}\n\n.app-content {\n    padding-top: 64px;\n    padding-left: 250px;\n    transition: padding-left .3s;\n    position: relative\n}\n\n.app-content.full {\n    padding-left: 0\n}\n\n.page-title {\n    -webkit-justify-content: space-between;\n    -ms-flex-pack: justify;\n    justify-content: space-between;\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center;\n    padding-bottom: 1rem;\n    border-bottom: solid 1px rgba(51, 51, 51, .12)\n}\n\n.page-title a {\n    color: #000;\n    opacity: .8\n}\n\n.page-subtitle h4,\n.page-title h3,\n.page-title h4 {\n    margin: 0;\n    font-size: 2rem\n}\n\n.page-subtitle h4,\n.page-title {\n    margin-bottom: 2rem\n}\n\n.app-loader,\n.currency-line,\n.page-title {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex\n}\n\n.app-loader {\n    width: 100%;\n    -webkit-justify-content: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    padding-top: 2rem\n}\n\n.currency-line {\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center;\n    border-bottom: 2px solid #fff;\n    padding-bottom: 1rem;\n    padding-top: 1.5rem\n}\n\n.currency-line span {\n    font-size: 1.5rem\n}\n\n.bill-card {\n    height: 310px\n}\n\n.pointer {\n    cursor: pointer\n}\n\n.form {\n    max-width: 500px\n}\n\n.breadcrumb-wrap,\n.breadcrumb-wrap a,\n.breadcrumb-wrap a:before {\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center\n}\n\n.breadcrumb-wrap {\n    position: relative;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex\n}\n\n.breadcrumb-wrap a,\n.breadcrumb-wrap a:before {\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    color: rgba(0, 0, 0, .7) !important\n}\n\n.history-chart {\n    max-width: 600px;\n    margin: 0 auto\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13110,7 +13259,336 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm._m(0)
+      _c("section", { staticClass: "main" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("h5", { staticClass: "title" }, [_vm._v("Страница добавления")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col s6" }, [
+              _c(
+                "a",
+                {
+                  ref: "modalNewUser",
+                  staticClass: "btn modal-trigger",
+                  attrs: { modal: _vm.modalNewUser, href: "#modal1" }
+                },
+                [_vm._v("Добавить пользователя")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  ref: "modalDepartment",
+                  staticClass: "btn modal-trigger",
+                  attrs: { modal: _vm.modalDepartment, href: "#modal2" }
+                },
+                [_vm._v("Добавить отдел")]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { ref: "modal", staticClass: "modal", attrs: { id: "modal1" } },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("section", { staticClass: "contact-form" }, [
+              _c("div", { staticClass: "container" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("form", { staticClass: "addUser" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "input-field col s4" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.firstName,
+                            expression: "firstName",
+                            modifiers: { trim: true }
+                          }
+                        ],
+                        attrs: { type: "text", id: "firstName" },
+                        domProps: { value: _vm.firstName },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.firstName = $event.target.value.trim()
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "firstName" } }, [
+                        _vm._v("Фамилия")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-field col s4" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.lastName,
+                            expression: "lastName",
+                            modifiers: { trim: true }
+                          }
+                        ],
+                        attrs: { type: "text", id: "lastName" },
+                        domProps: { value: _vm.lastName },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.lastName = $event.target.value.trim()
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "lastName" } }, [
+                        _vm._v("Имя")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-field col s4" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.middleName,
+                            expression: "middleName",
+                            modifiers: { trim: true }
+                          }
+                        ],
+                        attrs: { type: "text", id: "middleName" },
+                        domProps: { value: _vm.middleName },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.middleName = $event.target.value.trim()
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "middleName" } }, [
+                        _vm._v("Отчество")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "input-field col s8" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.email,
+                            expression: "email",
+                            modifiers: { trim: true }
+                          }
+                        ],
+                        attrs: { type: "email", id: "email" },
+                        domProps: { value: _vm.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.email = $event.target.value.trim()
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "email" } }, [
+                        _vm._v("Эл.адрес")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "input-field col s6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.password,
+                            expression: "password",
+                            modifiers: { trim: true }
+                          }
+                        ],
+                        attrs: {
+                          type: "password",
+                          name: "password",
+                          id: "pass"
+                        },
+                        domProps: { value: _vm.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.password = $event.target.value.trim()
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "pass" } }, [
+                        _vm._v("Пароль")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-field col s6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.passwordVerif,
+                            expression: "passwordVerif",
+                            modifiers: { trim: true }
+                          }
+                        ],
+                        attrs: {
+                          type: "password",
+                          name: "password-verif",
+                          id: "pass-verif"
+                        },
+                        domProps: { value: _vm.passwordVerif },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.passwordVerif = $event.target.value.trim()
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "pass-verif" } }, [
+                        _vm._v("Повторите пароль")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.addUser($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Добавить")]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          ref: "modalDepartment",
+          staticClass: "modal",
+          attrs: { id: "modal2" }
+        },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "container" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("form", { staticClass: "addDepartment" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "input-field col s12" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.depName,
+                          expression: "depName"
+                        }
+                      ],
+                      attrs: { type: "text", id: "depName" },
+                      domProps: { value: _vm.depName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.depName = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "depName" } }, [
+                      _vm._v("Введите имя нового отдела")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn",
+                      attrs: { type: "submit" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.addDepartment($event)
+                        }
+                      }
+                    },
+                    [_vm._v("Добавить")]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
     ],
     1
   )
@@ -13120,9 +13598,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "main" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h5", { staticClass: "title" }, [_vm._v("Страница добавления")])
+    return _c("div", { staticClass: "modal-close right-align" }, [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("close")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col s12 center-align" }, [
+      _c("p", { staticClass: "section__title section__title-form" }, [
+        _vm._v("\n                Добавление пользователя\n              ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-close right-align" }, [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("close")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col s12 center-align" }, [
+      _c("p", { staticClass: "section__title section__title-form" }, [
+        _vm._v("\n                Новый отдел\n              ")
       ])
     ])
   }

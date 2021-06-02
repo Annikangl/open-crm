@@ -212,6 +212,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -227,12 +228,13 @@ __webpack_require__.r(__webpack_exports__);
       collapsible: null,
       errors: false,
       references: "",
-      dropdown2: null
+      dropdown2: null,
+      userInfo: ""
     };
   },
   methods: {
     getData: function getData() {
-      console.log(this.references);
+      console.log(this.userInfo);
     },
     dropActions: function dropActions() {
       this.drop = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Dropdown.init(this.$refs.drop, {
@@ -253,6 +255,7 @@ __webpack_require__.r(__webpack_exports__);
     this.dropdown2 = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Dropdown.init(this.$refs.dropdown, {
       constrainWidth: false
     });
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
   }
 });
 
@@ -278,7 +281,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_public_assets_css_index_css__WEBPACK_IMPORTED_MODULE_1__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.main {\r\n  margin-top: 100px;\n}\n.collapsible-body_top,\r\n.collapsible-body-footer {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  color: #000;\r\n  font-size: 12px;\r\n  font-weight: bold;\n}\n.collapsible-body_top span {\r\n  color: rgb(158, 152, 152);\n}\n.content-center {\r\n  padding: 5px 0;\r\n  font-weight: bold;\n}\n.text-ref span {\r\n  font-weight: normal;\n}\n.footer-left span {\r\n  font-weight: normal;\n}\n.user-email,\r\n.user-phone {\r\n  font-weight: bold;\r\n  font-size: 12px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.main {\n  margin-top: 100px;\n}\n.collapsible-body_top,\n.collapsible-body-footer {\n  display: flex;\n  justify-content: space-between;\n  color: #000;\n  font-size: 12px;\n  font-weight: bold;\n}\n.collapsible-body_top span {\n  color: rgb(158, 152, 152);\n}\n.content-center {\n  padding: 5px 0;\n  font-weight: bold;\n}\n.text-ref span {\n  font-weight: normal;\n}\n.footer-left span {\n  font-weight: normal;\n}\n.user-email,\n.user-phone {\n  font-weight: bold;\n  font-size: 12px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -302,7 +305,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".empty-layout {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-flex-direction: column;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-top: 5rem;\r\n    height: 100vh\r\n}\r\n\r\n.auth-card {\r\n    width: 500px\r\n}\r\n\r\n.auth-submit {\r\n    width: 100%\r\n}\r\n\r\n.helper-text.invalid {\r\n    color: #f44336\r\n}\r\n\r\n.app-page {\r\n    padding: 2rem\r\n}\r\n.main {\r\n    margin-top: 100px;\r\n  }\r\n\r\n.app-main-layout {\r\n    position: relative;\r\n    min-height: 100vh\r\n}\r\n\r\n.app-sidenav {\r\n    padding-top: 5px;\r\n    position: absolute;\r\n    top: 64px;\r\n    width: 250px;\r\n    transition: transform .3s;\r\n    transition: transform .3s, -webkit-transform .3s;\r\n    bottom: 0 !important;\r\n    height: auto !important\r\n}\r\n\r\n.app-sidenav.open {\r\n    -webkit-transform: translateX(0);\r\n    transform: translateX(0)\r\n}\r\n\r\n.navbar {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 64px !important;\r\n    padding: 0 2rem;\r\n    z-index: 1000\r\n}\r\n\r\n.nav-wrapper {\r\n    -webkit-justify-content: space-between;\r\n    -ms-flex-pack: justify;\r\n    justify-content: space-between\r\n}\r\n\r\n.nav-wrapper,\r\n.navbar-left {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center\r\n}\r\n\r\n.navbar-left>a {\r\n    margin-right: 1rem\r\n}\r\n\r\n.app-content {\r\n    padding-top: 64px;\r\n    padding-left: 250px;\r\n    transition: padding-left .3s;\r\n    position: relative\r\n}\r\n\r\n.app-content.full {\r\n    padding-left: 0\r\n}\r\n\r\n.page-title {\r\n    -webkit-justify-content: space-between;\r\n    -ms-flex-pack: justify;\r\n    justify-content: space-between;\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-bottom: 1rem;\r\n    border-bottom: solid 1px rgba(51, 51, 51, .12)\r\n}\r\n\r\n.page-title a {\r\n    color: #000;\r\n    opacity: .8\r\n}\r\n\r\n.page-subtitle h4,\r\n.page-title h3,\r\n.page-title h4 {\r\n    margin: 0;\r\n    font-size: 2rem\r\n}\r\n\r\n.page-subtitle h4,\r\n.page-title {\r\n    margin-bottom: 2rem\r\n}\r\n\r\n.app-loader,\r\n.currency-line,\r\n.page-title {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex\r\n}\r\n\r\n.app-loader {\r\n    width: 100%;\r\n    -webkit-justify-content: center;\r\n    -ms-flex-pack: center;\r\n    justify-content: center;\r\n    padding-top: 2rem\r\n}\r\n\r\n.currency-line {\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    border-bottom: 2px solid #fff;\r\n    padding-bottom: 1rem;\r\n    padding-top: 1.5rem\r\n}\r\n\r\n.currency-line span {\r\n    font-size: 1.5rem\r\n}\r\n\r\n.bill-card {\r\n    height: 310px\r\n}\r\n\r\n.pointer {\r\n    cursor: pointer\r\n}\r\n\r\n.form {\r\n    max-width: 500px\r\n}\r\n\r\n.breadcrumb-wrap,\r\n.breadcrumb-wrap a,\r\n.breadcrumb-wrap a:before {\r\n    -webkit-align-items: center;\r\n    -ms-flex-align: center;\r\n    align-items: center\r\n}\r\n\r\n.breadcrumb-wrap {\r\n    position: relative;\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex\r\n}\r\n\r\n.breadcrumb-wrap a,\r\n.breadcrumb-wrap a:before {\r\n    display: -webkit-inline-flex;\r\n    display: -ms-inline-flexbox;\r\n    display: inline-flex;\r\n    color: rgba(0, 0, 0, .7) !important\r\n}\r\n\r\n.history-chart {\r\n    max-width: 600px;\r\n    margin: 0 auto\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".empty-layout {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-flex-direction: column;\n    -ms-flex-direction: column;\n    flex-direction: column;\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center;\n    padding-top: 5rem;\n    height: 100vh\n}\n\n.auth-card {\n    width: 500px\n}\n\n.auth-submit {\n    width: 100%\n}\n\n.helper-text.invalid {\n    color: #f44336\n}\n\n.app-page {\n    padding: 2rem\n}\n.main {\n    margin-top: 100px;\n  }\n\n.app-main-layout {\n    position: relative;\n    min-height: 100vh\n}\n\n.app-sidenav {\n    padding-top: 5px;\n    position: absolute;\n    top: 64px;\n    width: 250px;\n    transition: transform .3s;\n    transition: transform .3s, -webkit-transform .3s;\n    bottom: 0 !important;\n    height: auto !important\n}\n\n.app-sidenav.open {\n    -webkit-transform: translateX(0);\n    transform: translateX(0)\n}\n\n.navbar {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 64px !important;\n    padding: 0 2rem;\n    z-index: 1000\n}\n\n.nav-wrapper {\n    -webkit-justify-content: space-between;\n    -ms-flex-pack: justify;\n    justify-content: space-between\n}\n\n.nav-wrapper,\n.navbar-left {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center\n}\n\n.navbar-left>a {\n    margin-right: 1rem\n}\n\n.app-content {\n    padding-top: 64px;\n    padding-left: 250px;\n    transition: padding-left .3s;\n    position: relative\n}\n\n.app-content.full {\n    padding-left: 0\n}\n\n.page-title {\n    -webkit-justify-content: space-between;\n    -ms-flex-pack: justify;\n    justify-content: space-between;\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center;\n    padding-bottom: 1rem;\n    border-bottom: solid 1px rgba(51, 51, 51, .12)\n}\n\n.page-title a {\n    color: #000;\n    opacity: .8\n}\n\n.page-subtitle h4,\n.page-title h3,\n.page-title h4 {\n    margin: 0;\n    font-size: 2rem\n}\n\n.page-subtitle h4,\n.page-title {\n    margin-bottom: 2rem\n}\n\n.app-loader,\n.currency-line,\n.page-title {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex\n}\n\n.app-loader {\n    width: 100%;\n    -webkit-justify-content: center;\n    -ms-flex-pack: center;\n    justify-content: center;\n    padding-top: 2rem\n}\n\n.currency-line {\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center;\n    border-bottom: 2px solid #fff;\n    padding-bottom: 1rem;\n    padding-top: 1.5rem\n}\n\n.currency-line span {\n    font-size: 1.5rem\n}\n\n.bill-card {\n    height: 310px\n}\n\n.pointer {\n    cursor: pointer\n}\n\n.form {\n    max-width: 500px\n}\n\n.breadcrumb-wrap,\n.breadcrumb-wrap a,\n.breadcrumb-wrap a:before {\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center\n}\n\n.breadcrumb-wrap {\n    position: relative;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex\n}\n\n.breadcrumb-wrap a,\n.breadcrumb-wrap a:before {\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    color: rgba(0, 0, 0, .7) !important\n}\n\n.history-chart {\n    max-width: 600px;\n    margin: 0 auto\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13186,6 +13189,8 @@ var render = function() {
       _c("section", { staticClass: "main" }, [
         _c("div", { staticClass: "container" }, [
           _c("h5", { staticClass: "title" }, [_vm._v("Список обращений")]),
+          _vm._v(" "),
+          _c("div", [_vm._v(_vm._s())]),
           _vm._v(" "),
           _c("button", { staticClass: "btn", on: { click: _vm.getData } }, [
             _vm._v("Test api")

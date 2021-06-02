@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Validator;
+use Auth;
 class UsersController extends Controller
 {
     /**
@@ -54,6 +55,7 @@ class UsersController extends Controller
                 ]);
             }
             $post= User::create([
+                
                 "name" => $request->name,
                 "email" => $request->email,
                 "password" => Hash::make($request->password) //шифруем пароль
@@ -71,7 +73,11 @@ class UsersController extends Controller
     }
     public function login(Request $request){
 
+    
+        $userInfo = User::getUserByEmail($request->email);
+
         $user = User::where('email',$request->email)->first(); //выгрузить из базы
+        // $id =User::where('email',$request->email);
         if (is_null($user)) {
             return response()->json([
                 "status"=>false,
@@ -82,11 +88,13 @@ class UsersController extends Controller
         if (Hash::check($request->password,$user->password)) {
            // auth Ok
             $token = Str::random(20);
+           
             $user->token = $token;
             $user->save();
 
             return response()->json([
                 "status"=>true,
+                "id"=>$user,
                 "token"=>$token
             ]);
 
@@ -98,24 +106,57 @@ class UsersController extends Controller
        
 
     }
+    // public function login2(Request $request){
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+    //     $user = User::where('email',$request->email)->first(); //выгрузить из базы
+    //     $id =User::where('email',$request->email);
+    //     return $request->id;
+    //     if (is_null($user)) {
+    //         return response()->json([
+    //             "status"=>false,
+
+    //         ])->setStatusCode(401);
+    //     }
+    //     // dd(Hash::check($request->password,$user->password));
+    //     if (Hash::check($request->password,$user->password)) {
+    //        // auth Ok
+    //         $token = Str::random(20);
+            
+    //         $user->token = $token;
+    //         $user->save();
+
+    //         return response()->json([
+    //             "status"=>true,
+    //             "id"=>$request->id,
+    //             "token"=>$token
+    //         ]);
+
+    //     }else {
+    //         return response()->json([
+    //             "status"=>false,
+    //         ])->setStatusCode(401);
+    //     }
+       
+
+    // }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+        public function show($id)
+        {
         $post = User::find($id);
         if (!$post) {
-           return response()->json([
-               "status"=>false,
-               "message"=> "Post not found"
-           ])->setStatusCode(404);
+            return response()->json([
+                "status"=>false,
+                "message"=> "Post not found"
+            ])->setStatusCode(404);
         }
         return $post;
-    }
+    }   
 
     /**
      * Show the form for editing the specified resource.

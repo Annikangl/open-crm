@@ -124,6 +124,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       email: "",
       password: "",
+      userInfo: "",
       error: false
     };
   },
@@ -165,7 +166,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }).then(function (res) {
                   if (res.data.status) {
-                    _this.$router.push('/admin');
+                    _this.$router.push('/admin'); // this.userInfo = res.data;
+
+
+                    localStorage.setItem('userInfo', JSON.stringify(res.data));
                   }
                 })["catch"](function (err) {
                   console.log(err.response.data);
@@ -211,7 +215,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nbody {\r\n  display: flex;\r\n  min-height: 100vh;\r\n  flex-direction: column;\n}\n.section {\r\n    margin-bottom: 100px;\n}\nmain {\r\n  flex: 1 0 auto;\n}\nbody {\r\n  background: #fff;\n}\n.input-field input[type=\"date\"]:focus + label,\r\n.input-field input[type=\"text\"]:focus + label,\r\n.input-field input[type=\"email\"]:focus + label,\r\n.input-field input[type=\"password\"]:focus + label {\r\n  color: #e91e63;\n}\n.input-field input[type=\"date\"]:focus,\r\n.input-field input[type=\"text\"]:focus,\r\n.input-field input[type=\"email\"]:focus,\r\n.input-field input[type=\"password\"]:focus {\r\n  border-bottom: 2px solid #e91e63;\r\n  box-shadow: none;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nbody {\n  display: flex;\n  min-height: 100vh;\n  flex-direction: column;\n}\n.section {\n    margin-bottom: 100px;\n}\nmain {\n  flex: 1 0 auto;\n}\nbody {\n  background: #fff;\n}\n.input-field input[type=\"date\"]:focus + label,\n.input-field input[type=\"text\"]:focus + label,\n.input-field input[type=\"email\"]:focus + label,\n.input-field input[type=\"password\"]:focus + label {\n  color: #e91e63;\n}\n.input-field input[type=\"date\"]:focus,\n.input-field input[type=\"text\"]:focus,\n.input-field input[type=\"email\"]:focus,\n.input-field input[type=\"password\"]:focus {\n  border-bottom: 2px solid #e91e63;\n  box-shadow: none;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

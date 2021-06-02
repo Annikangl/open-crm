@@ -100,6 +100,7 @@ export default {
   data: () => ({
     email: "",
     password: "",
+    userInfo: "",
     error: false,
   
   }),
@@ -124,6 +125,8 @@ export default {
       .then(res => {
         if (res.data.status) {
           this.$router.push('/admin');
+          // this.userInfo = res.data;
+          localStorage.setItem('userInfo', JSON.stringify(res.data));
         }
       })
 

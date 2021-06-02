@@ -6,6 +6,7 @@
     <section class="main">
       <div class="container">
         <h5 class="title">Список обращений</h5>
+        <div>{{  }}</div>
         <button class="btn" @click="getData">Test api</button>
         <div class="row">
           <ul class="collapsible" ref="collapsible">
@@ -74,11 +75,12 @@ export default {
     errors: false,
     references: "",
     dropdown2: null,
+    userInfo: "",
   }),
 
   methods: {
     getData() {
-      console.log(this.references);
+      console.log(this.userInfo);
     },
 
     dropActions() {
@@ -100,6 +102,7 @@ export default {
       constrainWidth: false
     })
     
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
   },
 };
 </script>

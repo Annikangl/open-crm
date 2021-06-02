@@ -72,7 +72,27 @@ class PodrazdelController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validatior = Validator::make(
+            $request->all(),
+            [
+                "nameOtdel"=>["required"],
+
+            ]);
+
+            if ($validatior->fails()) {
+                return [
+                    "status"=>false,
+                    "errors"=>$validatior->messages()
+                ];
+            }
+            $post= podrazdel::create([
+                "nameOtdel" => $request->nameOtdel,
+
+            ]);
+            return[
+                "status" => true,
+                "post"=> $post
+            ];
     }
 
     /**

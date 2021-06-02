@@ -1872,6 +1872,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    userInfo: {
+      type: Object
+    }
+  },
   data: function data() {
     return {
       date: new Date(),
