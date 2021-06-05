@@ -20,16 +20,26 @@ class ReferencesController extends Controller
     public function index()
     {
 
-        $references = references::all();
-        if (!$references) {
+        $post = references::all();
+        if (!$post) {
             return response()->json([
                 "status"=>false,
                 "message"=> "References not found"
             ])->setStatusCode(404);
          }
-        return response()->json([
-            "references"=>new referenceCollection($references)
-        ]);
+        // return response()->json([
+        //                 "id"=>$post->id,
+        //      "FIO"=>$post->FIO,
+        //      "email"=>$post->email,
+        //      "telephone"=>$post->telephone,
+        //      "prichinaObr"=>$post->prichinaObr,
+        //      "textObr"=>$post->textObr,
+        //      "idPodr"=>$post->idPodr,
+        //      "status"=>$post->status,
+        //      "created_at"=>$post->created_at->format('d.m.Y'),
+        //      "updated_at"=>$post->created_at->format('d.m.Y'),
+        // ]);
+        return $post;
         
     }
 
