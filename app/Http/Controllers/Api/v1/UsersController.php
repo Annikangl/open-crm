@@ -94,8 +94,10 @@ class UsersController extends Controller
 
             return response()->json([
                 "status"=>true,
-                "id"=>$user,
-                "token"=>$token
+                "token"=>$token,
+                "id"=>$user->id,
+                "Name"=> $user->name
+
             ]);
 
         }else {
@@ -178,7 +180,56 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request_data = $request->only(['role']);
+
+        if (count($request_data) === 0) {
+            return response()->json([
+                "status" => false,
+                "message" => "All fields is empty"
+            ])->setStatusCode(422, "All fields is empty");
+        }
+
+        $rules_const = [
+            "role" => ['required', 'string'],
+        ];
+
+        $rules = [];
+
+        foreach ($request_data as $key => $data) {
+            $rules[$key] = $rules_const[$key];
+        }
+
+        $validator = Validator::make($request_data, $rules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                "status" => false,
+                "errors" => $validator->messages()
+            ])->setStatusCode(422);
+        }
+
+        $users = User::find($id);
+
+        if (!$users) {
+            return response()->json([
+                "status" => false,
+                "message" => "Article not found"
+            ])->setStatusCode(404, "Article not found");
+        }
+
+        foreach ($request_data as $key => $data) {
+            $users->$key = $data;
+        }
+
+        $users->save();
+
+        return response()->json([
+            "status" => true,
+            "message" => "User is updated",
+            "id"=>$users->id,
+            "Name"=>$users->name,
+            "Role"=>$users->role,
+        ])->setStatusCode(200, "Users is updated");
     }
 
     /**

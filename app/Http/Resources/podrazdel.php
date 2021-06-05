@@ -17,7 +17,9 @@ class podrazdel extends JsonResource
         return [
             "id"=>$this->id,
             "NameOtdel"=>$this->nameOtdel,
-            "NamePodrazdel"=>new NamePodrazdelCollection($this->takeName) 
+            "NamePodrazdel"=>new NamePodrazdelCollection($this->takeName) ,
+            
+            
 
         ];
     }
