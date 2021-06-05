@@ -6,14 +6,26 @@
     <section class="main">
       <div class="container">
         <h5 class="title">Список обращений</h5>
-        <div>{{  }}</div>
-        <button class="btn" @click="getData">Test api</button>
+        <div class="sortings">
+          <button class="btn" @click="getData">Test api</button>
+          <button class="btn" >По дате</button>
+          <button class="btn" >По статусу</button>
+          <button class="btn" >По территориальному органу</button>
+        </div>
+       
         <div class="row">
           <ul class="collapsible" ref="collapsible">
             <li v-for="reference in references" :key="reference.id">
               <div class="collapsible-header">
-                <i class="material-icons">person</i
-                >{{ reference.prichinaObr }}
+                <div class="collapsible-header__inner">
+                  <div class="header__inner-left">
+                      <i class="material-icons">person</i>{{ reference.prichinaObr }}
+                  </div>
+                  <div class="header__inner-right">
+                            <i class="material-icons">event</i>{{ reference.created_at }}
+                  </div>
+            
+                </div>
               </div>
               <div class="collapsible-body">
                 <div class="collapsible-body_top">
@@ -78,6 +90,8 @@ export default {
     userInfo: "",
   }),
 
+
+
   methods: {
     getData() {
       console.log(this.userInfo);
@@ -114,6 +128,11 @@ export default {
   margin-top: 100px;
 }
 
+.collapsible-header__inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 .collapsible-body_top,
 .collapsible-body-footer {
   display: flex;

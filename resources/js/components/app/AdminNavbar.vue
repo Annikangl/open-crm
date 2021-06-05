@@ -17,7 +17,7 @@
               data-target="dropdown"
               ref="dropdown"
             >
-              Admin
+              {{ getUsername }}
               <i class="material-icons right">arrow_drop_down</i>
             </a>
 
@@ -45,7 +45,17 @@
 export default {
     data: () => ({
     dropdown: null,
+    userInfo: "",
   }),
+
+  computed: {
+    getUsername() {
+      for (let item in this.userInfo.id) {
+        return this.userInfo.id['name'];
+      }
+    }
+  },
+
   methods: {
     logout() {
       console.log('Logout')
@@ -53,10 +63,13 @@ export default {
     }
   },
 
+
     mounted() {
     this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: false
     })
+
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
   },
 }
 </script>

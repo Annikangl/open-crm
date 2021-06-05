@@ -27,7 +27,7 @@
 
           <div class="row">
             <div class="secttion__footer center-align">
-              <button data-target="modal1" class="btn-large modal-trigger">
+              <button data-target="modal1" class="btn-large blue darken-1 modal-trigger">
                 Отправить заявку
               </button>
             </div>
@@ -213,22 +213,9 @@
                       </form>
                     </div>
 
-                  <!-- <div class="row">
-                    <ul>
-                      <li v-for="department in departments"
-                            :key="department.id"
-                            >
-                      <b>{{department.NameOtdel}} </b>
-                      <ul>
-                        <li v-for="{NamePodrazdel,id,} in department.NamePodrazdel"
-                              :key="id">  {{ NamePodrazdel }} </li>
-                      </ul>
-                      </li>
-                    </ul>
-                  </div> -->
                     <div class="row">
                       <div class="form-actions">
-                        <button type="submit" class="btn" @click.prevent="sendReferense">Отправить</button>
+                        <button type="submit" class="btn blue darken-1" @click.prevent="sendReferense">Отправить</button>
                       </div>
                     </div>
                   </form>
@@ -280,30 +267,33 @@ export default {
     ],
     // departments: null,
     deps: [
-      {id: 1, nameOtdel: "Центральный аппарат Министерства юстиции", NamePodrazdel: [
+      {id: 1, nameOtdel: "По умолчанию", NamePodrazdel: [
+        {id: 0, NamePodrazdel: "На усмотрение персонала"}
+      ] },
+      {id: 2, nameOtdel: "Центральный аппарат Министерства юстиции", NamePodrazdel: [
         {id: 1, NamePodrazdel: "Отдел приема документов"},
         {id: 2, NamePodrazdel: "Отдел обработки документов"},
         {id: 3, NamePodrazdel: "Отдел сбора информации"},
-        {id: 4, NamePodrazdel: "Отдел записи актов гражданского состояния"},
-        {id: 5, NamePodrazdel: "Отдел государственной регистрации вещных прав"},
-        {id: 6, NamePodrazdel: "Отдел государственной исполнительной службы"},
-        {id: 7, NamePodrazdel: "Отдел технической инвентаризации, учета и оценки н"},
+        // {id: 4, NamePodrazdel: "Отдел записи актов гражданского состояния"},
+        // {id: 5, NamePodrazdel: "Отдел государственной регистрации вещных прав"},
+        // {id: 6, NamePodrazdel: "Отдел государственной исполнительной службы"},
+        // {id: 7, NamePodrazdel: "Отдел технической инвентаризации, учета и оценки н"},
       ]},
-      {id: 2, nameOtdel: "Территориальные ограны", NamePodrazdel: [
+      {id: 3, nameOtdel: "Территориальные ограны", NamePodrazdel: [
         {id: 8, NamePodrazdel: "Донецкий городской отдел ЗАГС"},
         {id: 9, NamePodrazdel: "Макеевский городской отдел ЗАГС"},
-        {id: 10, NamePodrazdel: "Енакиевский городской отдел ЗАГС"},
-        {id: 11, NamePodrazdel: "Горловский городской отдел ЗАГС"},
-        {id: 12, NamePodrazdel: "Харцызский городской отдел ЗАГС"},
+        // {id: 10, NamePodrazdel: "Енакиевский городской отдел ЗАГС"},
+        // {id: 11, NamePodrazdel: "Горловский городской отдел ЗАГС"},
+        // {id: 12, NamePodrazdel: "Харцызский городской отдел ЗАГС"},
       ]},
-      {id: 3, nameOtdel: "Государственный нотариальный архив", NamePodrazdel: [
+      {id: 4, nameOtdel: "Государственный нотариальный архив", NamePodrazdel: [
         {id: 13, NamePodrazdel: "Государственная нотариальная контора города Донецк"},
         {id: 14, NamePodrazdel: "Государственная нотариальная контора города Харцызск"},
-        {id: 15, NamePodrazdel: "осударственная нотариальная контора города Снежное"},
-        {id: 16, NamePodrazdel: "Государственная нотариальная контора города Макеевка"},
-        {id: 17, NamePodrazdel: "Государственная нотариальная контора пгт Старобешево"},
-        {id: 18, NamePodrazdel: "Государственная нотариальная контора города Ясиноватая"},
-        {id: 19, NamePodrazdel: "Государственная нотариальная контора города Новоазовск"},
+        // {id: 15, NamePodrazdel: "осударственная нотариальная контора города Снежное"},
+        // {id: 16, NamePodrazdel: "Государственная нотариальная контора города Макеевка"},
+        // {id: 17, NamePodrazdel: "Государственная нотариальная контора пгт Старобешево"},
+        // {id: 18, NamePodrazdel: "Государственная нотариальная контора города Ясиноватая"},
+        // {id: 19, NamePodrazdel: "Государственная нотариальная контора города Новоазовск"},
       ]},
     ]
   }),
@@ -336,7 +326,9 @@ export default {
       })
       .then(res => {
         if (res.data.status) {
-          this.$router.push('/admin');
+           let instance = M.Modal.getInstance(this.$refs.modal);
+           instance.close();
+           this.$message('Обращение успешно отправлено!');
         }
       })
 
@@ -380,7 +372,7 @@ export default {
     this.select = M.FormSelect.init(this.$refs.select, {});
     this.select2 = M.FormSelect.init(this.$refs.select2, {});
 
-    this.$error("Select все еще не работает");
+    this.$error("TODO: Отформатировать дату на бекенде, сделать сортировки на фронте");
   },
 };
 </script>

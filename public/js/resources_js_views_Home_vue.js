@@ -275,19 +275,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -333,6 +320,13 @@ __webpack_require__.r(__webpack_exports__);
       // departments: null,
       deps: [{
         id: 1,
+        nameOtdel: "По умолчанию",
+        NamePodrazdel: [{
+          id: 0,
+          NamePodrazdel: "На усмотрение персонала"
+        }]
+      }, {
+        id: 2,
         nameOtdel: "Центральный аппарат Министерства юстиции",
         NamePodrazdel: [{
           id: 1,
@@ -343,21 +337,13 @@ __webpack_require__.r(__webpack_exports__);
         }, {
           id: 3,
           NamePodrazdel: "Отдел сбора информации"
-        }, {
-          id: 4,
-          NamePodrazdel: "Отдел записи актов гражданского состояния"
-        }, {
-          id: 5,
-          NamePodrazdel: "Отдел государственной регистрации вещных прав"
-        }, {
-          id: 6,
-          NamePodrazdel: "Отдел государственной исполнительной службы"
-        }, {
-          id: 7,
-          NamePodrazdel: "Отдел технической инвентаризации, учета и оценки н"
-        }]
+        } // {id: 4, NamePodrazdel: "Отдел записи актов гражданского состояния"},
+        // {id: 5, NamePodrazdel: "Отдел государственной регистрации вещных прав"},
+        // {id: 6, NamePodrazdel: "Отдел государственной исполнительной службы"},
+        // {id: 7, NamePodrazdel: "Отдел технической инвентаризации, учета и оценки н"},
+        ]
       }, {
-        id: 2,
+        id: 3,
         nameOtdel: "Территориальные ограны",
         NamePodrazdel: [{
           id: 8,
@@ -365,18 +351,12 @@ __webpack_require__.r(__webpack_exports__);
         }, {
           id: 9,
           NamePodrazdel: "Макеевский городской отдел ЗАГС"
-        }, {
-          id: 10,
-          NamePodrazdel: "Енакиевский городской отдел ЗАГС"
-        }, {
-          id: 11,
-          NamePodrazdel: "Горловский городской отдел ЗАГС"
-        }, {
-          id: 12,
-          NamePodrazdel: "Харцызский городской отдел ЗАГС"
-        }]
+        } // {id: 10, NamePodrazdel: "Енакиевский городской отдел ЗАГС"},
+        // {id: 11, NamePodrazdel: "Горловский городской отдел ЗАГС"},
+        // {id: 12, NamePodrazdel: "Харцызский городской отдел ЗАГС"},
+        ]
       }, {
-        id: 3,
+        id: 4,
         nameOtdel: "Государственный нотариальный архив",
         NamePodrazdel: [{
           id: 13,
@@ -384,22 +364,12 @@ __webpack_require__.r(__webpack_exports__);
         }, {
           id: 14,
           NamePodrazdel: "Государственная нотариальная контора города Харцызск"
-        }, {
-          id: 15,
-          NamePodrazdel: "осударственная нотариальная контора города Снежное"
-        }, {
-          id: 16,
-          NamePodrazdel: "Государственная нотариальная контора города Макеевка"
-        }, {
-          id: 17,
-          NamePodrazdel: "Государственная нотариальная контора пгт Старобешево"
-        }, {
-          id: 18,
-          NamePodrazdel: "Государственная нотариальная контора города Ясиноватая"
-        }, {
-          id: 19,
-          NamePodrazdel: "Государственная нотариальная контора города Новоазовск"
-        }]
+        } // {id: 15, NamePodrazdel: "осударственная нотариальная контора города Снежное"},
+        // {id: 16, NamePodrazdel: "Государственная нотариальная контора города Макеевка"},
+        // {id: 17, NamePodrazdel: "Государственная нотариальная контора пгт Старобешево"},
+        // {id: 18, NamePodrazdel: "Государственная нотариальная контора города Ясиноватая"},
+        // {id: 19, NamePodrazdel: "Государственная нотариальная контора города Новоазовск"},
+        ]
       }]
     };
   },
@@ -443,7 +413,10 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (res) {
         if (res.data.status) {
-          _this.$router.push('/admin');
+          var instance = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().Modal.getInstance(_this.$refs.modal);
+          instance.close();
+
+          _this.$message('Обращение успешно отправлено!');
         }
       })["catch"](function (err) {
         console.log(err.response.data);
@@ -479,7 +452,7 @@ __webpack_require__.r(__webpack_exports__);
     this.modal = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().Modal.init(this.$refs.modal, {});
     this.select = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().FormSelect.init(this.$refs.select, {});
     this.select2 = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().FormSelect.init(this.$refs.select2, {});
-    this.$error("Select все еще не работает");
+    this.$error("TODO: Отформатировать дату на бекенде, сделать сортировки на фронте");
   }
 });
 
@@ -502,7 +475,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.content[data-v-63cd6604] {\n  height: 100vh;\n}\n.section__title-form[data-v-63cd6604] {\n  font-weight: bold;\n  margin-bottom: 30px;\n}\n.secttion__footer[data-v-63cd6604] {\n  margin-top: 100px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.content[data-v-63cd6604] {\r\n  height: 100vh;\n}\n.section__title-form[data-v-63cd6604] {\r\n  font-weight: bold;\r\n  margin-bottom: 30px;\n}\n.secttion__footer[data-v-63cd6604] {\r\n  margin-top: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13631,7 +13604,7 @@ var render = function() {
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn",
+                                  staticClass: "btn blue darken-1",
                                   attrs: { type: "submit" },
                                   on: {
                                     click: function($event) {
@@ -13698,7 +13671,7 @@ var staticRenderFns = [
             _c(
               "button",
               {
-                staticClass: "btn-large modal-trigger",
+                staticClass: "btn-large blue darken-1 modal-trigger",
                 attrs: { "data-target": "modal1" }
               },
               [_vm._v("\n              Отправить заявку\n            ")]

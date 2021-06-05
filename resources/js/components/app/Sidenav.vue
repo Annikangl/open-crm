@@ -25,7 +25,8 @@ export default {
   data: () => ({
     links: [
       {title: 'Главная', url: '/admin', exact: true},
-      {title: 'Обращения', url: '/admin/references'},
+      {title: 'Все обращения', url: '/admin/references'},
+      {title: 'Обращения без адресата', url: '/admin/references?empty'},
       {title: 'Добавить пользователя', url: '/admin/create'},
       {title: 'Отделы', url: '/admin/departmens'},
       {title: 'Категории', url: '/admin/category'}
