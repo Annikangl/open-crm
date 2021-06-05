@@ -19,14 +19,7 @@ class ReferencesController extends Controller
      */
     public function index()
     {
-        // $post= references::all();
-        // if (!$post) {
-        //     return response()->json([
-        //         "status"=>false,
-        //         "message"=> "Post not found"
-        //     ])->setStatusCode(404);
-        //  }
-        //  return $post;
+
         $references = references::all();
         if (!$references) {
             return response()->json([
