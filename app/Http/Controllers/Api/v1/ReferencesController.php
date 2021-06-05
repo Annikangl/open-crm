@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\reference;
+// use App\Http\Resources\referenceCollection;
 use App\Models\references;
 use Illuminate\Http\Request;
 use Validator;
+use App\Http\Resources\reference as referenceResource;
+use App\Http\Resources\referenceCollection;
 class ReferencesController extends Controller
 {
     /**
@@ -15,14 +19,24 @@ class ReferencesController extends Controller
      */
     public function index()
     {
-        $post= references::all();
-        if (!$post) {
+        // $post= references::all();
+        // if (!$post) {
+        //     return response()->json([
+        //         "status"=>false,
+        //         "message"=> "Post not found"
+        //     ])->setStatusCode(404);
+        //  }
+        //  return $post;
+        $references = references::all();
+        if (!$references) {
             return response()->json([
                 "status"=>false,
-                "message"=> "Post not found"
+                "message"=> "References not found"
             ])->setStatusCode(404);
          }
-         return $post;
+        return response()->json([
+            "references"=>new referenceCollection($references)
+        ]);
         
     }
 
@@ -90,7 +104,22 @@ class ReferencesController extends Controller
                "message"=> "Post not found"
            ])->setStatusCode(404);
         }
-        return $post;
+        // $post= references::find([
+        //     "created_at" => $post->created_at->format('d.m.Y')
+        // ]);
+        return response()->json([
+            
+             "id"=>$post->id,
+             "FIO"=>$post->FIO,
+             "email"=>$post->email,
+             "telephone"=>$post->telephone,
+             "prichinaObr"=>$post->prichinaObr,
+             "textObr"=>$post->textObr,
+             "idPodr"=>$post->idPodr,
+             "status"=>$post->status,
+             "created_at"=>$post->created_at->format('d.m.Y'),
+             "updated_at"=>$post->created_at->format('d.m.Y'),
+             ]);
     }
 
     /**
@@ -113,7 +142,56 @@ class ReferencesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request_data = $request->only(['status']);
+
+        if (count($request_data) === 0) {
+            return response()->json([
+                "status" => false,
+                "message" => "All fields is empty"
+            ])->setStatusCode(422, "All fields is empty");
+        }
+
+        $rules_const = [
+            "status" => ['required', 'string'],
+        ];
+
+        $rules = [];
+
+        foreach ($request_data as $key => $data) {
+            $rules[$key] = $rules_const[$key];
+        }
+
+        $validator = Validator::make($request_data, $rules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                "status" => false,
+                "errors" => $validator->messages()
+            ])->setStatusCode(422);
+        }
+
+        $reference = references::find($id);
+
+        if (!$reference) {
+            return response()->json([
+                "status" => false,
+                "message" => "Article not found"
+            ])->setStatusCode(404, "Article not found");
+        }
+
+        foreach ($request_data as $key => $data) {
+            $reference->$key = $data;
+        }
+
+        $reference->save();
+
+        return response()->json([
+            "status" => true,
+            "message" => "Reference is updated",
+            "id"=>$reference->id,
+            "Full name"=>$reference->FIO,
+            "Status"=>$reference->status,
+        ])->setStatusCode(200, "Reference is updated");
     }
 
     /**

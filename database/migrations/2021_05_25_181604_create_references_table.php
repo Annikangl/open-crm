@@ -17,6 +17,7 @@ class CreateReferencesTable extends Migration
             $table->id();
             $table->integer('idUser')->nullable();
             $table->text('FIO')->nullable();
+            $table->text('email')->nullable();
             $table->string('telephone')->nullable();
             $table->text('prichinaObr')->nullable();
             $table->text('textObr')->nullable();
