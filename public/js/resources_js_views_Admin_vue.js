@@ -236,12 +236,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_charts_LineChart_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/charts/LineChart.vue */ "./resources/js/components/charts/LineChart.vue");
 /* harmony import */ var _components_charts_DoughnutChart_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/charts/DoughnutChart.vue */ "./resources/js/components/charts/DoughnutChart.vue");
-/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! materialize-css */ "./node_modules/materialize-css/dist/js/materialize.js");
-/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(materialize_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_app_AdminNavbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/app/AdminNavbar */ "./resources/js/components/app/AdminNavbar.vue");
-/* harmony import */ var _components_app_Sidenav__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/app/Sidenav */ "./resources/js/components/app/Sidenav.vue");
+/* harmony import */ var _components_app_AdminNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/app/AdminNavbar */ "./resources/js/components/app/AdminNavbar.vue");
+/* harmony import */ var _components_app_Sidenav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/app/Sidenav */ "./resources/js/components/app/Sidenav.vue");
 //
 //
 //
@@ -263,19 +259,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-
-
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Navbar: _components_app_AdminNavbar__WEBPACK_IMPORTED_MODULE_4__.default,
-    Sidenav: _components_app_Sidenav__WEBPACK_IMPORTED_MODULE_5__.default,
+    Navbar: _components_app_AdminNavbar__WEBPACK_IMPORTED_MODULE_2__.default,
+    Sidenav: _components_app_Sidenav__WEBPACK_IMPORTED_MODULE_3__.default,
     Linechart: _components_charts_LineChart_vue__WEBPACK_IMPORTED_MODULE_0__.default,
     DoughnutChart: _components_charts_DoughnutChart_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
@@ -283,7 +274,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       isOpen: true,
       lineProperty: {
-        width: 900
+        width: 900,
+        delayed: ""
       },
       doughnutProperty: {
         id: "doughnut",
@@ -302,16 +294,13 @@ __webpack_require__.r(__webpack_exports__);
       doughnutData: {
         labels: ['Обработанные', 'Необработанные', 'В обработке', 'Отклонены'],
         datasets: [{
-          backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+          backgroundColor: ['#9966ff', '#E46651', '#00D8FF', '#DD1B16'],
           data: [40, 20, 80, 10]
         }]
       },
       lineOptions: {
         scales: {
           y: {
-            beginAtZero: true
-          },
-          x: {
             beginAtZero: true
           }
         }
@@ -51073,7 +51062,29 @@ var render = function() {
   return _c("div", { staticClass: "main" }, [
     _c("nav", { staticClass: "navbar  light-blue accent-1" }, [
       _c("div", { staticClass: "nav-wrapper" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "navbar-left" }, [
+          _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.$emit("click")
+                }
+              }
+            },
+            [
+              _c("i", { staticClass: "material-icons black-text" }, [
+                _vm._v("dehaze")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("span", { staticClass: "black-text" }, [
+            _vm._v("Панель администратора")
+          ])
+        ]),
         _vm._v(" "),
         _c("ul", { staticClass: "right hide-on-small-and-down" }, [
           _c("li", [
@@ -51146,18 +51157,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-left" }, [
-      _c("span", { staticClass: "black-text" }, [
-        _vm._v("Панель администратора")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -51241,7 +51241,13 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Navbar"),
+      _c("Navbar", {
+        on: {
+          click: function($event) {
+            _vm.isOpen = !_vm.isOpen
+          }
+        }
+      }),
       _vm._v(" "),
       _c("Sidenav", {
         model: {
@@ -51255,9 +51261,18 @@ var render = function() {
       _vm._v(" "),
       _c("section", { staticClass: "main" }, [
         _c("div", { staticClass: "container center-align" }, [
-          _c("h5", { staticClass: "title" }, [
-            _vm._v("Статистическая информация")
-          ]),
+          _c(
+            "h5",
+            {
+              staticClass: "title",
+              on: {
+                click: function($event) {
+                  _vm.isOpen = !_vm.isOpen
+                }
+              }
+            },
+            [_vm._v("Статистическая информация")]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "row " }, [
             _c(
@@ -51289,9 +51304,7 @@ var render = function() {
               ],
               1
             )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" })
+          ])
         ])
       ])
     ],

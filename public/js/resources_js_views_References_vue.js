@@ -258,7 +258,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getData: function getData() {
-      console.log(this.userInfo);
+      console.log(this.references);
     },
     dropActions: function dropActions() {
       this.drop = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Dropdown.init(this.$refs.drop, {
@@ -13032,7 +13032,29 @@ var render = function() {
   return _c("div", { staticClass: "main" }, [
     _c("nav", { staticClass: "navbar  light-blue accent-1" }, [
       _c("div", { staticClass: "nav-wrapper" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "navbar-left" }, [
+          _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.$emit("click")
+                }
+              }
+            },
+            [
+              _c("i", { staticClass: "material-icons black-text" }, [
+                _vm._v("dehaze")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("span", { staticClass: "black-text" }, [
+            _vm._v("Панель администратора")
+          ])
+        ]),
         _vm._v(" "),
         _c("ul", { staticClass: "right hide-on-small-and-down" }, [
           _c("li", [
@@ -13105,18 +13127,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-left" }, [
-      _c("span", { staticClass: "black-text" }, [
-        _vm._v("Панель администратора")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

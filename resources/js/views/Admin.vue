@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Navbar />
-    <Sidenav v-model="isOpen" />
+    <Navbar @click="isOpen = !isOpen" />
+    <Sidenav v-model="isOpen"  />
 
     <section class="main">
       <div class="container center-align">
-        <h5 class="title">Статистическая информация</h5>
+        <h5 class="title" @click="isOpen = !isOpen">Статистическая информация</h5>
         <div class="row ">
           <div class="col s6">
               <Linechart :chartdata="lineData" :options="lineOptions" :width="lineProperty.width" />
@@ -13,9 +13,6 @@
         <div class="col s6">
           <DoughnutChart :id="doughnutProperty.id" :type="doughnutProperty.type" :chartdata="doughnutData" />
         </div>
-        </div>
-        <div class="row">
-        
         </div>
       </div>
     </section>
@@ -25,8 +22,6 @@
 <script>
 import Linechart from "../components/charts/LineChart.vue";
 import DoughnutChart from '../components/charts/DoughnutChart.vue';
-import M from "materialize-css";
-import axios from "axios";
 import Navbar from "../components/app/AdminNavbar";
 import Sidenav from "../components/app/Sidenav";
 
@@ -42,6 +37,7 @@ export default {
     isOpen: true,
     lineProperty: {
       width: 900,
+      delayed: "",
     },
 
     doughnutProperty: {
@@ -81,7 +77,7 @@ export default {
         datasets: [
           {
             backgroundColor: [
-              '#41B883',
+              '#9966ff',
               '#E46651',
               '#00D8FF',
               '#DD1B16'
@@ -94,9 +90,6 @@ export default {
     lineOptions: {
       scales: {
         y: {
-          beginAtZero: true,
-        },
-        x: {
           beginAtZero: true,
         },
       },

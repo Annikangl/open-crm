@@ -3,9 +3,9 @@
     <nav class="navbar  light-blue accent-1">
       <div class="nav-wrapper">
         <div class="navbar-left">
-          <!-- <a href="#" @click.prevent="$emit('click')">
+          <a href="#" @click.prevent="$emit('click')">
             <i class="material-icons black-text">dehaze</i>
-          </a> -->
+          </a>
           <span class="black-text">Панель администратора</span>
         </div>
 

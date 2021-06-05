@@ -94,7 +94,7 @@ export default {
 
   methods: {
     getData() {
-      console.log(this.userInfo);
+      console.log(this.references);
     },
 
     dropActions() {
