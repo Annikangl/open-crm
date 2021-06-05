@@ -9,5 +9,5 @@ use Illuminate\Database\Eloquent\Model;
 class references extends Model
 {
     use HasFactory;
-    protected $fillable = ['FIO','email','telephone','prichinaObr','textObr','idPodr','status'];
+    protected $fillable = ['id','FIO','email','telephone','prichinaObr','textObr','idPodr','status'];
 }
