@@ -4,52 +4,18 @@
     <Sidenav v-model="isOpen" />
 
     <section class="main">
-      <div class="container">
-        <h5 class="title">Список обращений</h5>
-        <button class="btn" @click="getData">Test api</button>
+      <div class="container center-align">
+        <h5 class="title">Статистическая информация</h5>
+        <div class="row ">
+          <div class="col s6">
+              <Linechart :chartdata="lineData" :options="lineOptions" :width="lineProperty.width" />
+          </div>
+        <div class="col s6">
+          <DoughnutChart :id="doughnutProperty.id" :type="doughnutProperty.type" :chartdata="doughnutData" />
+        </div>
+        </div>
         <div class="row">
-          <ul class="collapsible" ref="collapsible">
-            <li v-for="reference in references" :key="reference.id">
-              <div class="collapsible-header">
-                <i class="material-icons">person</i
-                >{{ reference.prichinaObr }}
-              </div>
-              <div class="collapsible-body">
-                <div class="collapsible-body_top">
-                  <div class="top_left">
-                    ФИО заявителя: <span>{{ reference.FIO }}</span>
-                  </div>
-                  <div class="top-right">
-                    Дата
-                    <span class="date-ref">{{ reference.created_at }}</span>
-                  </div>
-                </div>
-
-                <div class="collapsible-body-content">
-                  <div class="content-center">
-                    <p class="text-ref">
-                      Текст обращения <span> {{ reference.textObr }} </span>
-                    </p>
-                  </div>
-                </div>
-
-                <div class="collapsible-body-footer">
-                  <div class="footer-left">
-                    <div class="user-email">
-                      Эл.адрес &nbsp; <span>{{ reference.email }}</span>
-                    </div>
-                    <div class="user-phone">
-                      Контактный тел.&nbsp;
-                      <span> {{ reference.telephone }}</span>
-                    </div>
-                  </div>
-                  <div class="footer-right">
-                    <button class="btn dropdown-trigger"  data-target="dropdown1"><i class="material-icons right">edit</i>Изменить</button>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
+        
         </div>
       </div>
     </section>
@@ -57,6 +23,8 @@
 </template>
 
 <script>
+import Linechart from "../components/charts/LineChart.vue";
+import DoughnutChart from '../components/charts/DoughnutChart.vue';
 import M from "materialize-css";
 import axios from "axios";
 import Navbar from "../components/app/AdminNavbar";
@@ -66,80 +34,85 @@ export default {
   components: {
     Navbar,
     Sidenav,
+    Linechart,
+    DoughnutChart
   },
 
   data: () => ({
     isOpen: true,
-    collapsible: null,
-    errors: false,
-    references: "",
-    dropdown2: null,
-  }),
-
-  methods: {
-    getData() {
-      console.log(this.references);
+    lineProperty: {
+      width: 900,
     },
 
-    dropActions() {
-      this.drop = M.Dropdown.init(this.$refs.drop, {constrainWidth: false});
-    }
-  },
+    doughnutProperty: {
+      id: "doughnut",
+      type: "doughnut",
+    },
 
-  mounted() {
-    axios
-      .get("/api/references")
-      .then((response) => (this.references = response.data))
-      .catch((error) => {
-        console.log(error);
-        this.errors = true;
-      });
+    lineData: {
+      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      datasets: [
+        {
+          label: "Обращения",
+          data: [12, 17, 9, 5, 8, 13, 15, 16, 17],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.9)",
+            "rgba(54, 162, 235, 0.9)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+          ],
+          borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
 
-    this.collapsible = M.Collapsible.init(this.$refs.collapsible, {});
-    this.dropdown2 = M.Dropdown.init(this.$refs.dropdown, {
-      constrainWidth: false
-    })
-    
-  },
+    doughnutData: {
+        labels: ['Обработанные', 'Необработанные', 'В обработке', 'Отклонены'],
+        datasets: [
+          {
+            backgroundColor: [
+              '#41B883',
+              '#E46651',
+              '#00D8FF',
+              '#DD1B16'
+            ],
+            data: [40, 20, 80, 10]
+          }
+        ]
+    },
+
+    lineOptions: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+        x: {
+          beginAtZero: true,
+        },
+      },
+    },
+  }),
+
+
+
+  mounted() {},
 };
 </script>
 
-<style>
+<style scoped>
 @import "/assets/css/index.css";
 
-.main {
-  margin-top: 100px;
-}
-
-.collapsible-body_top,
-.collapsible-body-footer {
-  display: flex;
-  justify-content: space-between;
-  color: #000;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.collapsible-body_top span {
-  color: rgb(158, 152, 152);
-}
-
-.content-center {
-  padding: 5px 0;
-  font-weight: bold;
-}
-
-.text-ref span {
-  font-weight: normal;
-}
-
-.footer-left span {
-  font-weight: normal;
-}
-
-.user-email,
-.user-phone {
-  font-weight: bold;
-  font-size: 12px;
+.title {
+  margin-bottom: 100px;
 }
 </style>

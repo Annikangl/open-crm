@@ -124,6 +124,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       email: "",
       password: "",
+      userInfo: "",
       error: false
     };
   },
@@ -165,7 +166,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }).then(function (res) {
                   if (res.data.status) {
-                    _this.$router.push('/admin');
+                    _this.$router.push('/admin'); // this.userInfo = res.data;
+
+
+                    localStorage.setItem('userInfo', JSON.stringify(res.data));
                   }
                 })["catch"](function (err) {
                   console.log(err.response.data);

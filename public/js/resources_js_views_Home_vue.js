@@ -275,19 +275,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -333,6 +320,13 @@ __webpack_require__.r(__webpack_exports__);
       // departments: null,
       deps: [{
         id: 1,
+        nameOtdel: "По умолчанию",
+        NamePodrazdel: [{
+          id: 0,
+          NamePodrazdel: "На усмотрение персонала"
+        }]
+      }, {
+        id: 2,
         nameOtdel: "Центральный аппарат Министерства юстиции",
         NamePodrazdel: [{
           id: 1,
@@ -343,21 +337,13 @@ __webpack_require__.r(__webpack_exports__);
         }, {
           id: 3,
           NamePodrazdel: "Отдел сбора информации"
-        }, {
-          id: 4,
-          NamePodrazdel: "Отдел записи актов гражданского состояния"
-        }, {
-          id: 5,
-          NamePodrazdel: "Отдел государственной регистрации вещных прав"
-        }, {
-          id: 6,
-          NamePodrazdel: "Отдел государственной исполнительной службы"
-        }, {
-          id: 7,
-          NamePodrazdel: "Отдел технической инвентаризации, учета и оценки н"
-        }]
+        } // {id: 4, NamePodrazdel: "Отдел записи актов гражданского состояния"},
+        // {id: 5, NamePodrazdel: "Отдел государственной регистрации вещных прав"},
+        // {id: 6, NamePodrazdel: "Отдел государственной исполнительной службы"},
+        // {id: 7, NamePodrazdel: "Отдел технической инвентаризации, учета и оценки н"},
+        ]
       }, {
-        id: 2,
+        id: 3,
         nameOtdel: "Территориальные ограны",
         NamePodrazdel: [{
           id: 8,
@@ -365,18 +351,12 @@ __webpack_require__.r(__webpack_exports__);
         }, {
           id: 9,
           NamePodrazdel: "Макеевский городской отдел ЗАГС"
-        }, {
-          id: 10,
-          NamePodrazdel: "Енакиевский городской отдел ЗАГС"
-        }, {
-          id: 11,
-          NamePodrazdel: "Горловский городской отдел ЗАГС"
-        }, {
-          id: 12,
-          NamePodrazdel: "Харцызский городской отдел ЗАГС"
-        }]
+        } // {id: 10, NamePodrazdel: "Енакиевский городской отдел ЗАГС"},
+        // {id: 11, NamePodrazdel: "Горловский городской отдел ЗАГС"},
+        // {id: 12, NamePodrazdel: "Харцызский городской отдел ЗАГС"},
+        ]
       }, {
-        id: 3,
+        id: 4,
         nameOtdel: "Государственный нотариальный архив",
         NamePodrazdel: [{
           id: 13,
@@ -384,22 +364,12 @@ __webpack_require__.r(__webpack_exports__);
         }, {
           id: 14,
           NamePodrazdel: "Государственная нотариальная контора города Харцызск"
-        }, {
-          id: 15,
-          NamePodrazdel: "осударственная нотариальная контора города Снежное"
-        }, {
-          id: 16,
-          NamePodrazdel: "Государственная нотариальная контора города Макеевка"
-        }, {
-          id: 17,
-          NamePodrazdel: "Государственная нотариальная контора пгт Старобешево"
-        }, {
-          id: 18,
-          NamePodrazdel: "Государственная нотариальная контора города Ясиноватая"
-        }, {
-          id: 19,
-          NamePodrazdel: "Государственная нотариальная контора города Новоазовск"
-        }]
+        } // {id: 15, NamePodrazdel: "осударственная нотариальная контора города Снежное"},
+        // {id: 16, NamePodrazdel: "Государственная нотариальная контора города Макеевка"},
+        // {id: 17, NamePodrazdel: "Государственная нотариальная контора пгт Старобешево"},
+        // {id: 18, NamePodrazdel: "Государственная нотариальная контора города Ясиноватая"},
+        // {id: 19, NamePodrazdel: "Государственная нотариальная контора города Новоазовск"},
+        ]
       }]
     };
   },
@@ -443,11 +413,13 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (res) {
         if (res.data.status) {
-          _this.$router.push('/admin');
+          var instance = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().Modal.getInstance(_this.$refs.modal);
+          instance.close();
+
+          _this.$message('Обращение успешно отправлено!');
         }
       })["catch"](function (err) {
         console.log(err.response.data);
-        console.log(_this.select2);
         _this.error = true;
       });
     } // async submitForm() {
@@ -480,7 +452,7 @@ __webpack_require__.r(__webpack_exports__);
     this.modal = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().Modal.init(this.$refs.modal, {});
     this.select = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().FormSelect.init(this.$refs.select, {});
     this.select2 = materialize_css__WEBPACK_IMPORTED_MODULE_2___default().FormSelect.init(this.$refs.select2, {});
-    this.$error("Select все еще не работает");
+    this.$error("TODO: Отформатировать дату на бекенде, сделать сортировки на фронте");
   }
 });
 
@@ -13162,8 +13134,6 @@ var render = function() {
     [
       _c("Navbar"),
       _vm._v(" "),
-      _c("Modal"),
-      _vm._v(" "),
       _c("div", { staticClass: "app-content" }, [
         _vm._m(0),
         _vm._v(" "),
@@ -13634,7 +13604,7 @@ var render = function() {
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn",
+                                  staticClass: "btn blue darken-1",
                                   attrs: { type: "submit" },
                                   on: {
                                     click: function($event) {
@@ -13701,7 +13671,7 @@ var staticRenderFns = [
             _c(
               "button",
               {
-                staticClass: "btn-large modal-trigger",
+                staticClass: "btn-large blue darken-1 modal-trigger",
                 attrs: { "data-target": "modal1" }
               },
               [_vm._v("\n              Отправить заявку\n            ")]

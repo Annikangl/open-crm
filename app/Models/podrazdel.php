@@ -14,7 +14,7 @@ class podrazdel extends Model
 
     
     // protected $fillable = ['idOrganMinusta','idTerritorial','idNotarial'];
-    protected $fillable = ['name'];
+    protected $fillable = ['nameOtdel'];
 
     public function takeName(){
         // $justice=$this->hasMany(justice::class,'id','idOrganMinusta');

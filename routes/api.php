@@ -31,6 +31,7 @@ Route::resource('user', UsersController::class);
 Route::post('/register', [UsersController::class,"store"]);
 Route::post('/login', [UsersController::class,"login"]);
 
+
 // Route::get('/test', function(){
 //     return[
 //         "key"=> \Illuminate\Support\Str::random(30),

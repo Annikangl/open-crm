@@ -15,6 +15,12 @@
 
 <script>
 export default {
+  props: {
+    userInfo: {
+      type: Object
+    }
+  },
+  
   data: () => ({
     date: new Date(),
     interval: null,
