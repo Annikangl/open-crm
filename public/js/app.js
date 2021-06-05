@@ -2055,6 +2055,12 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_Admin_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Admin */ "./resources/js/views/Admin.vue"));
   }
 }, {
+  path: "/admin/references",
+  name: 'Admin',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_References_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/References */ "./resources/js/views/References.vue"));
+  }
+}, {
   path: "/admin/create",
   name: 'create',
   meta: {
@@ -56121,7 +56127,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_Login_vue":1,"resources_js_views_Home_vue":1,"resources_js_views_Admin_vue":1,"resources_js_views_CreateUser_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_Login_vue":1,"resources_js_views_Home_vue":1,"resources_js_views_Admin_vue":1,"resources_js_views_References_vue":1,"resources_js_views_CreateUser_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

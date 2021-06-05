@@ -26,6 +26,12 @@ const routes = [
     },
 
     {
+        path: "/admin/references",
+        name: 'Admin',
+        component: () => import('./views/References')
+    },
+
+    {
         path: "/admin/create",
         name: 'create',
         meta: {layout: 'main'},
