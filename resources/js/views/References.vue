@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Navbar @click="isOpen = !isOpen" />
     <Sidenav v-model="isOpen" />
 
     <section class="main">
@@ -105,7 +105,7 @@ export default {
   mounted() {
     axios
       .get("/api/references")
-      .then((response) => (this.references = response.data))
+      .then((response) => (this.references = response.data.references))
       .catch((error) => {
         console.log(error);
         this.errors = true;

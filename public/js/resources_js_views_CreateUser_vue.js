@@ -13272,7 +13272,13 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Navbar"),
+      _c("Navbar", {
+        on: {
+          click: function($event) {
+            _vm.isOpen = !_vm.isOpen
+          }
+        }
+      }),
       _vm._v(" "),
       _c("Sidenav", {
         model: {

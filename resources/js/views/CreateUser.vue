@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Navbar @click="isOpen = !isOpen" />
     <Sidenav v-model="isOpen" />
 
     <section class="main">

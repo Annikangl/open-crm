@@ -270,7 +270,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/references").then(function (response) {
-      return _this.references = response.data;
+      return _this.references = response.data.references;
     })["catch"](function (error) {
       console.log(error);
       _this.errors = true;
@@ -13211,7 +13211,13 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Navbar"),
+      _c("Navbar", {
+        on: {
+          click: function($event) {
+            _vm.isOpen = !_vm.isOpen
+          }
+        }
+      }),
       _vm._v(" "),
       _c("Sidenav", {
         model: {
