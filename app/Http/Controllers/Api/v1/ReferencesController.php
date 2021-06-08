@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\reference;
 // use App\Http\Resources\referenceCollection;
+use Illuminate\Support\Facades\Gate;
 use App\Models\references;
 use Illuminate\Http\Request;
 use Validator;
@@ -20,16 +21,16 @@ class ReferencesController extends Controller
     public function index()
     {
 
-        $references = references::all();
-        if (!$references) {
+        $post = references::all();
+        if (!$post) {
             return response()->json([
                 "status"=>false,
                 "message"=> "References not found"
             ])->setStatusCode(404);
          }
-        return response()->json([
-            "references"=>new referenceCollection($references)
-        ]);
+
+        // Gate::authorize('add-user',[$post]);
+        return $post;
         
     }
 
@@ -97,9 +98,7 @@ class ReferencesController extends Controller
                "message"=> "Post not found"
            ])->setStatusCode(404);
         }
-        // $post= references::find([
-        //     "created_at" => $post->created_at->format('d.m.Y')
-        // ]);
+
         return response()->json([
             
              "id"=>$post->id,

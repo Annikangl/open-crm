@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -22,8 +23,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'token'
+        'token',
+        'id_role'
     ];
+    public function takeId(){
+        // $justice=$this->hasMany(justice::class,'id','idOrganMinusta');
+        // $territorial=$this->hasMany(territorial::class,'id','idTerritorial');
+        // $notarial=$this->hasMany(notarial::class,'id','idNotarial');
+
+   
+        return $this->hasMany(user_ref::class,'id_user','id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -44,9 +54,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function getUserByEmail($email) {
-        // $sql = "SELECT * FROM users WHERE email = $email";
-        $result = User::where('email', $email);
-        return $result;
-    }
+
 }

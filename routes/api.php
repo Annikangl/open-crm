@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\v1\PodrazdelController;
 use App\Http\Controllers\Api\v1\MeasuresController;
 use App\Http\Controllers\Api\v1\TerritorialController;
 use App\Http\Controllers\Api\v1\PodrazdelListController;
+use App\Http\Controllers\Api\v1\UserRef;
+use App\Http\Controllers\Api\v1\UserRefController;
 use GuzzleHttp\Middleware;
 
 /*
@@ -32,6 +34,14 @@ Route::post('/register', [UsersController::class,"store"]);
 Route::post('/login', [UsersController::class,"login"]);
 
 
+
+// Route::group(['middleware' => ['role:admin']], function () {
+//     Route::get('/test', function(){
+//         return view('test');
+//     });
+// });
+
+
 // Route::get('/test', function(){
 //     return[
 //         "key"=> \Illuminate\Support\Str::random(30),
@@ -46,6 +56,7 @@ Route::post('/login', [UsersController::class,"login"]);
 // Route::resource('territorial', TerritorialController::class);
 // Route::resource('justice', JusticeController::class);
 
+Route::resource('userref', UserRef::class);
 Route::resource('references', ReferencesController::class);
 Route::resource('podrazdel', PodrazdelController::class);
 Route::resource('measures', MeasuresController::class);

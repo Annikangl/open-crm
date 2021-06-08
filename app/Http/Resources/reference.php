@@ -20,9 +20,9 @@ class reference extends JsonResource
             "email"=>$this->email,
             "telephone"=>$this->telephone,
             "prichinaObr"=>$this->prichinaObr,
-            "textObr"=>$this->prichinaObr,
-            "idPodr"=>$this->prichinaObr,
-            "status"=>$this->prichinaObr,
+            "textObr"=>$this->textObr,
+            "idPodr"=>$this->idPodr,
+            "status"=>$this->status,
             "created_at"=>$this->created_at->format('d.m.Y'),
             "updated_at"=>$this->updated_at->format('d.m.Y'),
             // "NamePodrazdel"=>new NamePodrazdelCollection($this->takeName)

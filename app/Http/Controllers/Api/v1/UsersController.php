@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\user as ResourcesUser;
+use App\Http\Resources\userCollection;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Validator;
 use Auth;
+
+use Illuminate\Support\Facades\Gate;
+
 class UsersController extends Controller
 {
     /**
@@ -60,12 +65,7 @@ class UsersController extends Controller
                 "email" => $request->email,
                 "password" => Hash::make($request->password) //шифруем пароль
             ]);
-            // if (User::check($request->email,$post->email)) {
-            //     return response()->json([
-            //         "status"=>false,
-            //         "message"=> "Post dont add"
-            //     ])->setStatusCode(404);
-            //  }
+
             return response()->json([
                 "status" => true,
                 "post"=> $post
@@ -73,11 +73,9 @@ class UsersController extends Controller
     }
     public function login(Request $request){
 
-    
-        $userInfo = User::getUserByEmail($request->email);
 
         $user = User::where('email',$request->email)->first(); //выгрузить из базы
-        // $id =User::where('email',$request->email);
+        
         if (is_null($user)) {
             return response()->json([
                 "status"=>false,
@@ -91,13 +89,13 @@ class UsersController extends Controller
            
             $user->token = $token;
             $user->save();
-
+            
             return response()->json([
                 "status"=>true,
                 "token"=>$token,
                 "id"=>$user->id,
-                "Name"=> $user->name
-
+                "Name"=> $user->name,
+                "ref_id"=>new ResourcesUser($user)
             ]);
 
         }else {
@@ -108,46 +106,14 @@ class UsersController extends Controller
        
 
     }
-    // public function login2(Request $request){
+    
 
-    //     $user = User::where('email',$request->email)->first(); //выгрузить из базы
-    //     $id =User::where('email',$request->email);
-    //     return $request->id;
-    //     if (is_null($user)) {
-    //         return response()->json([
-    //             "status"=>false,
-
-    //         ])->setStatusCode(401);
-    //     }
-    //     // dd(Hash::check($request->password,$user->password));
-    //     if (Hash::check($request->password,$user->password)) {
-    //        // auth Ok
-    //         $token = Str::random(20);
-            
-    //         $user->token = $token;
-    //         $user->save();
-
-    //         return response()->json([
-    //             "status"=>true,
-    //             "id"=>$request->id,
-    //             "token"=>$token
-    //         ]);
-
-    //     }else {
-    //         return response()->json([
-    //             "status"=>false,
-    //         ])->setStatusCode(401);
-    //     }
-       
-
-    // }
-
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
         public function show($id)
         {
         $post = User::find($id);
@@ -157,6 +123,7 @@ class UsersController extends Controller
                 "message"=> "Post not found"
             ])->setStatusCode(404);
         }
+        // Gate::authorize('roles-user',[$post]);
         return $post;
     }   
 
@@ -180,7 +147,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request_data = $request->only(['role']);
+        $request_data = $request->only(['id_role']);
 
         if (count($request_data) === 0) {
             return response()->json([
@@ -190,7 +157,7 @@ class UsersController extends Controller
         }
 
         $rules_const = [
-            "role" => ['required', 'string'],
+            "id_role" => ['required', 'string'],
         ];
 
         $rules = [];
@@ -228,7 +195,7 @@ class UsersController extends Controller
             "message" => "User is updated",
             "id"=>$users->id,
             "Name"=>$users->name,
-            "Role"=>$users->role,
+            "Role"=>$users->id_role,
         ])->setStatusCode(200, "Users is updated");
     }
 
