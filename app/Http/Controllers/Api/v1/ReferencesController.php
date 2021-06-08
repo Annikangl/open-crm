@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\reference;
 // use App\Http\Resources\referenceCollection;
+use Illuminate\Support\Facades\Gate;
 use App\Models\references;
 use Illuminate\Http\Request;
 use Validator;
@@ -27,18 +28,8 @@ class ReferencesController extends Controller
                 "message"=> "References not found"
             ])->setStatusCode(404);
          }
-        // return response()->json([
-        //                 "id"=>$post->id,
-        //      "FIO"=>$post->FIO,
-        //      "email"=>$post->email,
-        //      "telephone"=>$post->telephone,
-        //      "prichinaObr"=>$post->prichinaObr,
-        //      "textObr"=>$post->textObr,
-        //      "idPodr"=>$post->idPodr,
-        //      "status"=>$post->status,
-        //      "created_at"=>$post->created_at->format('d.m.Y'),
-        //      "updated_at"=>$post->created_at->format('d.m.Y'),
-        // ]);
+
+        // Gate::authorize('add-user',[$post]);
         return $post;
         
     }
@@ -107,9 +98,7 @@ class ReferencesController extends Controller
                "message"=> "Post not found"
            ])->setStatusCode(404);
         }
-        // $post= references::find([
-        //     "created_at" => $post->created_at->format('d.m.Y')
-        // ]);
+
         return response()->json([
             
              "id"=>$post->id,
