@@ -105,7 +105,7 @@ export default {
   mounted() {
     axios
       .get("/api/references")
-      .then((response) => (this.references = response.data.references))
+      .then((response) => (this.references = response.data))
       .catch((error) => {
         console.log(error);
         this.errors = true;

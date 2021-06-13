@@ -1,12 +1,15 @@
 <template>
-  <nav class="navbar blue darken-1">
+  <nav class="navbar white">
     <div class="container">
- <div class="nav-wrapper">
-      <a href="#!" class="#">Министерство юстиции</a>
+ <div class="nav-wrapper ">
+      <a href="/" class="brand-logo text-dark"><img src="/assets/img/logo.jpg" class="nav-logo" alt="logo" width="50" height="50">
+        <span>Министерства юстиции</span>
+      </a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#"><i class="material-icons">email</i></a></li>
-        <li><a href="#"><i class="material-icons">info</i></a></li>
-        <li><a href="/login"><i class="material-icons">account_circle</i></a></li>
+        <li><a href="#" class="active">Главная</a></li>
+        <li><a href="#">Контакты</a></li>
+        <!-- <li><a href="#"><i class="material-icons">info</i></a></li>
+        <li><a href="/login"><i class="material-icons">account_circle</i></a></li> -->
       </ul>
     </div>
     </div>
@@ -48,3 +51,24 @@ export default {
   },
 };
 </script>
+
+<style lang="css" scoped>
+.nav-logo {
+  margin-top: 7px;
+  margin-right: 5px;
+}
+
+.brand-logo {
+  display: flex;
+}
+
+.brand-logo span {
+  color: #000;
+  font-size: 16px;
+}
+
+nav ul a {
+  color: #2a2a2a;
+  font-weight: 600;
+}
+</style>

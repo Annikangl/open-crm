@@ -7,27 +7,26 @@
         <div class="container">
           <div class="row">
             <div class="col s12 center-align">
-              <h4>В форме ниже оставьте своео обращение</h4>
+              <!-- <h4>В форме ниже оставьте своео обращение</h4> -->
             </div>
-            <div class="col s4 valign-wrapper">
-              <p>
-                Перейдите на форму, котораян аходиться ниже. Внимательно
-                ознакомьтесь с пунктами формы и заполните каждую графу После
-                успешного заполнения формы, отправьте ее. <br />
-                Форма будет на рассмотрении
-              </p>
+            <div class="col s4 left-content">
+              <h3 class="main-title">Направление гражданами замечаний и предложений</h3>
+              <p>Данный раздел на ведомственном сайте создан для направления гражданами замечаний и предложений.</p>
+              <p>Нажмите на кнопку "Отправить заявку" и заполните все данные в появившейя форме.</p>
             </div>
-            <div class="col s8">
+            <div class="col s8 right-content">
               <img
-                src="https://i.pinimg.com/originals/76/aa/e0/76aae01457877a4b5355e6528daaa520.png"
-                alt=""
+                src="/assets/img/main-bg.jpg"
+                alt="main bg"
+                width="100%"
+                height=""
               />
             </div>
           </div>
 
           <div class="row">
             <div class="secttion__footer center-align">
-              <button data-target="modal1" class="btn-large blue darken-1 modal-trigger">
+              <button data-target="modal1" class="btn-large purple lighten-2 modal-trigger">
                 Отправить заявку
               </button>
             </div>
@@ -215,7 +214,7 @@
 
                     <div class="row">
                       <div class="form-actions">
-                        <button type="submit" class="btn blue darken-1" @click.prevent="sendReferense">Отправить</button>
+                        <button type="submit" class="btn purple lighten-2" @click.prevent="sendReferense">Отправить</button>
                       </div>
                     </div>
                   </form>
@@ -378,8 +377,17 @@ export default {
 </script>
 
 <style scoped>
-.content {
-  height: 100vh;
+.app-content {
+  height: 90vh;
+  margin-top: 100px;
+}
+
+.main-title {
+  font-weight: 800;
+}
+
+.left-content p {
+  font-size: 21px;
 }
 
 .section__title-form {

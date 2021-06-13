@@ -153,7 +153,9 @@ export default {
       })
       .then(res => {
         if (res.data.status) {
-          alert('Пользователь добавлен');
+          let instance = M.Modal.getInstance(this.$refs.modal);
+          instance.close();
+          this.$message('Модератор добавлен!');
         }
       })
 
