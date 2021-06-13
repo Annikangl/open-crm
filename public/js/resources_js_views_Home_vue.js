@@ -13566,7 +13566,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "col s4 left-content" }, [
             _c("h3", { staticClass: "main-title" }, [
-              _vm._v("Направление гражданами замечаний и предложений")
+              _vm._v("Направление замечаний и предложений")
             ]),
             _vm._v(" "),
             _c("p", [
