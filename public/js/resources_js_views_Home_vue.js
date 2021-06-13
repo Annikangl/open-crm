@@ -13527,7 +13527,7 @@ var render = function() {
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn purple lighten-2",
+                                  staticClass: "btn z-depth-3 purple lighten-2",
                                   attrs: { type: "submit" },
                                   on: {
                                     click: function($event) {
@@ -13599,7 +13599,8 @@ var staticRenderFns = [
             _c(
               "button",
               {
-                staticClass: "btn-large purple lighten-2 modal-trigger",
+                staticClass:
+                  "btn-large z-depth-4 purple lighten-2 modal-trigger open-btn",
                 attrs: { "data-target": "modal1" }
               },
               [_vm._v("\n              Отправить заявку\n            ")]

@@ -26,7 +26,7 @@
 
           <div class="row">
             <div class="secttion__footer center-align">
-              <button data-target="modal1" class="btn-large purple lighten-2 modal-trigger">
+              <button data-target="modal1" class="btn-large z-depth-4 purple lighten-2 modal-trigger open-btn">
                 Отправить заявку
               </button>
             </div>
@@ -214,7 +214,7 @@
 
                     <div class="row">
                       <div class="form-actions">
-                        <button type="submit" class="btn purple lighten-2" @click.prevent="sendReferense">Отправить</button>
+                        <button type="submit" class="btn z-depth-3 purple lighten-2" @click.prevent="sendReferense">Отправить</button>
                       </div>
                     </div>
                   </form>
