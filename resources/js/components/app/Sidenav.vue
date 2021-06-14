@@ -29,7 +29,7 @@ export default {
       {title: 'Обращения без адресата', url: '/admin/references?empty'},
       {title: 'Добавить пользователя', url: '/admin/create'},
       {title: 'Отделы', url: '/admin/departmens'},
-      {title: 'Отчеты', url: '/admin/report'}
+      {title: 'Отчеты', url: '/admin/export'}
     ],
 
     modalData: "data-"

@@ -2030,53 +2030,85 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default);
-var routes = [{
-  path: '/login',
-  name: 'login',
-  meta: {
-    layout: 'empty'
-  },
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_views_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Login.vue */ "./resources/js/views/Login.vue"));
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: [{
+    path: '/login',
+    name: 'login',
+    meta: {
+      layout: 'empty'
+    },
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Login.vue */ "./resources/js/views/Login.vue"));
+    }
+  }, {
+    path: "/",
+    name: 'Home',
+    meta: {
+      layout: 'main'
+    },
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Home */ "./resources/js/views/Home.vue"));
+    }
+  }, {
+    path: "/admin",
+    name: 'Admin',
+    meta: {
+      auth: true
+    },
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_Admin_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Admin */ "./resources/js/views/Admin.vue"));
+    }
+  }, {
+    path: "/admin/references",
+    name: 'Admin',
+    meta: {
+      auth: true
+    },
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_References_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/References */ "./resources/js/views/References.vue"));
+    }
+  }, {
+    path: "/admin/create",
+    name: 'create',
+    meta: {
+      auth: true
+    },
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_CreateUser_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/CreateUser */ "./resources/js/views/CreateUser.vue"));
+    }
+  }, {
+    path: "/admin/export",
+    name: 'export-report',
+    meta: {
+      auth: true
+    },
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_Reports_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Reports */ "./resources/js/views/Reports.vue"));
+    }
+  }]
+});
+router.beforeEach(function (to, from, next) {
+  var currentUser = localStorage.getItem('userInfo');
+  var requireAuth = to.matched.some(function (record) {
+    return record.meta.auth;
+  });
+
+  if (requireAuth && !currentUser) {
+    next('/login');
+  } else {
+    next();
   }
-}, {
-  path: "/",
-  name: 'Home',
-  meta: {
-    layout: 'main'
-  },
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_views_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Home */ "./resources/js/views/Home.vue"));
-  }
-}, {
-  path: "/admin",
-  name: 'Admin',
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_views_Admin_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Admin */ "./resources/js/views/Admin.vue"));
-  }
-}, {
-  path: "/admin/references",
-  name: 'Admin',
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_views_References_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/References */ "./resources/js/views/References.vue"));
-  }
-}, {
-  path: "/admin/create",
-  name: 'create',
-  meta: {
-    layout: 'main'
-  },
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_views_CreateUser_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/CreateUser */ "./resources/js/views/CreateUser.vue"));
-  }
-}];
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
-  mode: "history",
-  routes: routes
-}));
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router); // export default new vueRouter({
+//     mode: "history",
+//     routes
+// });
 
 /***/ }),
 
@@ -56550,7 +56582,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_Login_vue":1,"resources_js_views_Home_vue":1,"resources_js_views_Admin_vue":1,"resources_js_views_References_vue":1,"resources_js_views_CreateUser_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_Login_vue":1,"resources_js_views_Home_vue":1,"resources_js_views_Admin_vue":1,"resources_js_views_References_vue":1,"resources_js_views_CreateUser_vue":1,"resources_js_views_Reports_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

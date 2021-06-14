@@ -50,11 +50,10 @@ export default {
 
   computed: {
     getUsername() {
-      for (let item in this.userInfo.id) {
-        return this.userInfo.id['name'];
-      }
+     return this.userInfo.Name;
     }
   },
+  
 
   methods: {
     logout() {

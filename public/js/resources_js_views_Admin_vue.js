@@ -63,9 +63,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     getUsername: function getUsername() {
-      for (var item in this.userInfo.id) {
-        return this.userInfo.id['name'];
-      }
+      return this.userInfo.Name;
     }
   },
   methods: {
@@ -140,7 +138,7 @@ __webpack_require__.r(__webpack_exports__);
         url: '/admin/departmens'
       }, {
         title: 'Отчеты',
-        url: '/admin/report'
+        url: '/admin/export'
       }],
       modalData: "data-"
     };
