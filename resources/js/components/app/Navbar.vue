@@ -7,7 +7,7 @@
       </a>
       <ul class="right hide-on-med-and-down">
         <li class="active"><a href="#" class="">Главная</a></li>
-        <li><a href="#">Контакты</a></li>
+        <li><a href="#contact">Контакты</a></li>
         <!-- <li><a href="#"><i class="material-icons">info</i></a></li>
         <li><a href="/login"><i class="material-icons">account_circle</i></a></li> -->
       </ul>

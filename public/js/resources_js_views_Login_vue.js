@@ -487,7 +487,7 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
-                                return _vm.submitHandler.apply(null, arguments)
+                                return _vm.submitHandler($event)
                               }
                             }
                           },

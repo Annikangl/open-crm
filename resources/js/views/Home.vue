@@ -34,7 +34,7 @@
       </section>
 
         <div class="divider"></div>
-         <section class="contact-info">
+         <section class="contact-info" id="contact">
            <div class="container">
              <div class="row">
                

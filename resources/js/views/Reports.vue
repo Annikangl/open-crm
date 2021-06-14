@@ -12,7 +12,7 @@
             </div>
             <div class="col s4 center-align">
                 <p>Нажми кнопку "Экспорт", чтобы начать загрузку отчета</p>
-                <button class="btn">Экспорт</button>
+                <a href="/api/export" class="btn">Экспорт</a>
             </div>
         </div>
       </div>
