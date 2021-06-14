@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\reference;
-// use App\Http\Resources\referenceCollection;
 use Illuminate\Support\Facades\Gate;
 use App\Models\references;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Resources\reference as referenceResource;
 use App\Http\Resources\referenceCollection;
+
+use App\Exports\ReferencesExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ReferencesController extends Controller
 {
     /**
@@ -34,6 +37,7 @@ class ReferencesController extends Controller
         
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,6 +46,13 @@ class ReferencesController extends Controller
     public function create()
     {
         //
+    }
+
+
+    public function referencesExport(){
+        $export  = Excel::download(new ReferencesExport, 'references.xlsx');
+        
+        return $export;
     }
 
     /**

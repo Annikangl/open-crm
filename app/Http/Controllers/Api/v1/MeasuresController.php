@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\measures;
+use App\Models\measurs;
 use Illuminate\Http\Request;
 use Validator;
 class MeasuresController extends Controller
@@ -15,7 +15,7 @@ class MeasuresController extends Controller
      */
     public function index()
     {
-        return measures::all();
+        return measurs::all();
     }
 
     /**
@@ -39,8 +39,8 @@ class MeasuresController extends Controller
         $validatior = Validator::make(
             $request->all(),
             [
-                "idObr"=>["required"],
-                "textOtveta"=>["required"],
+                "id_obr"=>["required"],
+                "text"=>["required"],
             ]);
 
             if ($validatior->fails()) {
@@ -49,9 +49,9 @@ class MeasuresController extends Controller
                     "errors"=>$validatior->messages()
                 ];
             }
-            $post= measures::create([
-                "idObr" => $request->idObr,
-                "textOtveta" => $request->textOtveta,
+            $post= measurs::create([
+                "id_obr" => $request->id_obr,
+                "text" => $request->text,
 
             ]);
             return[
@@ -68,7 +68,7 @@ class MeasuresController extends Controller
      */
     public function show($id)
     {
-        $post = measures::find($id);
+        $post = measurs::find($id);
         if (!$post) {
            return response()->json([
                "status"=>false,
@@ -98,7 +98,7 @@ class MeasuresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request_data = $request->only(['textOtveta']);
+        $request_data = $request->only(['text']);
 
         if (count($request_data) === 0) {
             return response()->json([
@@ -108,7 +108,7 @@ class MeasuresController extends Controller
         }
 
         $rules_const = [
-            "textOtveta" => ['required', 'string'],
+            "text" => ['required', 'string'],
         ];
 
         $rules = [];
@@ -126,7 +126,7 @@ class MeasuresController extends Controller
             ])->setStatusCode(422);
         }
 
-        $measures = measures::find($id);
+        $measures = measurs::find($id);
 
         if (!$measures) {
             return response()->json([
@@ -145,7 +145,7 @@ class MeasuresController extends Controller
             "status" => true,
             "message" => "Answer is updated",
             "id"=>$measures->id,
-            "Answer"=>$measures->textOtveta,
+            "Answer"=>$measures->text,
         ])->setStatusCode(200, "Answer is updated");
     }
 

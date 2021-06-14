@@ -12,6 +12,8 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "maatwebsite/excel": "^3.1",
+        "phpoffice/phpspreadsheet": "^1.18",
         "spatie/laravel-permission": "^4.2"
     },
     "require-dev": {
