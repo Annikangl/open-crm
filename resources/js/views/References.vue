@@ -8,9 +8,9 @@
         <h5 class="title">Список обращений</h5>
         <div class="sortings">
           <button class="btn" @click="getData">Test api</button>
-          <button class="btn" >По дате</button>
+          <!-- <button class="btn" >По дате</button> -->
           <button class="btn" >По статусу</button>
-          <button class="btn" >По территориальному органу</button>
+          <!-- <button class="btn" >По территориальному органу</button> -->
         </div>
        
         <div class="row">
@@ -22,7 +22,7 @@
                       <i class="material-icons">person</i>{{ reference.prichinaObr }}
                   </div>
                   <div class="header__inner-right">
-                            <i class="material-icons">event</i>{{ reference.created_at }}
+                            <i class="material-icons">event</i>{{ reference.created_at.substring(0,10) }}
                   </div>
             
                 </div>
@@ -30,11 +30,12 @@
               <div class="collapsible-body">
                 <div class="collapsible-body_top">
                   <div class="top_left">
-                    ФИО заявителя: <span>{{ reference.FIO }}</span>
+                    ФИО заявителя: <span>{{ reference.FIO }}</span> <br>
+                    Статус: <span> {{ reference.status }} </span>
                   </div>
                   <div class="top-right">
                     Дата
-                    <span class="date-ref">{{ reference.created_at }}</span>
+                    <span class="date-ref">{{ reference.created_at.substring(0,10) }}</span>
                   </div>
                 </div>
 
@@ -57,7 +58,8 @@
                     </div>
                   </div>
                   <div class="footer-right">
-                    <button class="btn dropdown-trigger"  data-target="dropdown1"><i class="material-icons right">edit</i>Изменить</button>
+                    <!-- <button class="btn modal-trigger" ref="modalReply" href="#modal1">Добавить пользователя</button> -->
+                    <button class="btn modal-trigger" ref="modalReply" href="#modal3" ><i class="material-icons right">reply</i>Ответить</button>
                   </div>
                 </div>
               </div>
@@ -66,7 +68,42 @@
         </div>
       </div>
     </section>
+
+                <!-- Модальное окно с формой newDepartment -->
+      <div id="modal3" class="modal" ref="modalReply">
+        <div class="modal-content">
+          <div class="modal-close right-align">
+            <i class="material-icons">close</i>
+          </div>
+
+          <div class="container">
+              <div class="col s12 center-align">
+                <p class="section__title section__title-form">
+                  Отправка ответа
+                </p>
+              </div>
+
+              <form class="addDepartment">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <span></span>
+                    <input type="text" id="reply-text" v-model="reply">
+                    <label for="reply-text">Введите текст ответа</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <button class="btn" type="submit" >Ответить</button>
+                </div>
+              </form>
+          </div>
+
+        </div>
+      </div>
   </div>
+
+
+  
 </template>
 
 <script>
@@ -88,9 +125,13 @@ export default {
     references: "",
     dropdown2: null,
     userInfo: "",
+    reply: "",
+    modalReply: null,
   }),
 
-
+  filters: {
+    
+  },
 
   methods: {
     getData() {
@@ -115,7 +156,7 @@ export default {
     this.dropdown2 = M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: false
     })
-    
+    this.modalReply = M.Modal.init(this.$refs.modalReply, {});
     this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
   },
 };

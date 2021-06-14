@@ -28,7 +28,6 @@ export default {
       {title: 'Все обращения', url: '/admin/references'},
       {title: 'Обращения без адресата', url: '/admin/references?empty'},
       {title: 'Добавить пользователя', url: '/admin/create'},
-      {title: 'Отделы', url: '/admin/departmens'},
       {title: 'Отчеты', url: '/admin/export'}
     ],
 

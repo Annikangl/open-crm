@@ -134,9 +134,6 @@ __webpack_require__.r(__webpack_exports__);
         title: 'Добавить пользователя',
         url: '/admin/create'
       }, {
-        title: 'Отделы',
-        url: '/admin/departmens'
-      }, {
         title: 'Отчеты',
         url: '/admin/export'
       }],
@@ -235,6 +232,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -251,9 +285,12 @@ __webpack_require__.r(__webpack_exports__);
       errors: false,
       references: "",
       dropdown2: null,
-      userInfo: ""
+      userInfo: "",
+      reply: "",
+      modalReply: null
     };
   },
+  filters: {},
   methods: {
     getData: function getData() {
       console.log(this.references);
@@ -277,6 +314,7 @@ __webpack_require__.r(__webpack_exports__);
     this.dropdown2 = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Dropdown.init(this.$refs.dropdown, {
       constrainWidth: false
     });
+    this.modalReply = materialize_css__WEBPACK_IMPORTED_MODULE_0___default().Modal.init(this.$refs.modalReply, {});
     this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
   }
 });
@@ -13160,13 +13198,7 @@ var render = function() {
               _vm._v("Test api")
             ]),
             _vm._v(" "),
-            _c("button", { staticClass: "btn" }, [_vm._v("По дате")]),
-            _vm._v(" "),
-            _c("button", { staticClass: "btn" }, [_vm._v("По статусу")]),
-            _vm._v(" "),
-            _c("button", { staticClass: "btn" }, [
-              _vm._v("По территориальному органу")
-            ])
+            _c("button", { staticClass: "btn" }, [_vm._v("По статусу")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
@@ -13191,7 +13223,8 @@ var render = function() {
                           _vm._v("event")
                         ]),
                         _vm._v(
-                          _vm._s(reference.created_at) + "\n                "
+                          _vm._s(reference.created_at.substring(0, 10)) +
+                            "\n                "
                         )
                       ])
                     ])
@@ -13201,13 +13234,19 @@ var render = function() {
                     _c("div", { staticClass: "collapsible-body_top" }, [
                       _c("div", { staticClass: "top_left" }, [
                         _vm._v("\n                  ФИО заявителя: "),
-                        _c("span", [_vm._v(_vm._s(reference.FIO))])
+                        _c("span", [_vm._v(_vm._s(reference.FIO))]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v("\n                  Статус: "),
+                        _c("span", [
+                          _vm._v(" " + _vm._s(reference.status) + " ")
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "top-right" }, [
                         _vm._v("\n                  Дата\n                  "),
                         _c("span", { staticClass: "date-ref" }, [
-                          _vm._v(_vm._s(reference.created_at))
+                          _vm._v(_vm._s(reference.created_at.substring(0, 10)))
                         ])
                       ])
                     ]),
@@ -13240,7 +13279,23 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(0, true)
+                      _c("div", { staticClass: "footer-right" }, [
+                        _c(
+                          "button",
+                          {
+                            ref: "modalReply",
+                            refInFor: true,
+                            staticClass: "btn modal-trigger",
+                            attrs: { href: "#modal3" }
+                          },
+                          [
+                            _c("i", { staticClass: "material-icons right" }, [
+                              _vm._v("reply")
+                            ]),
+                            _vm._v("Ответить")
+                          ]
+                        )
+                      ])
                     ])
                   ])
                 ])
@@ -13249,7 +13304,56 @@ var render = function() {
             )
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { ref: "modalReply", staticClass: "modal", attrs: { id: "modal3" } },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "container" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("form", { staticClass: "addDepartment" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "input-field col s12" }, [
+                    _c("span"),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.reply,
+                          expression: "reply"
+                        }
+                      ],
+                      attrs: { type: "text", id: "reply-text" },
+                      domProps: { value: _vm.reply },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.reply = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "reply-text" } }, [
+                      _vm._v("Введите текст ответа")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ])
+          ])
+        ]
+      )
     ],
     1
   )
@@ -13259,18 +13363,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "footer-right" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn dropdown-trigger",
-          attrs: { "data-target": "dropdown1" }
-        },
-        [
-          _c("i", { staticClass: "material-icons right" }, [_vm._v("edit")]),
-          _vm._v("Изменить")
-        ]
-      )
+    return _c("div", { staticClass: "modal-close right-align" }, [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("close")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col s12 center-align" }, [
+      _c("p", { staticClass: "section__title section__title-form" }, [
+        _vm._v("\n                Отправка ответа\n              ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
+        _vm._v("Ответить")
+      ])
     ])
   }
 ]

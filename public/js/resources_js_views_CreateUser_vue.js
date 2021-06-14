@@ -134,9 +134,6 @@ __webpack_require__.r(__webpack_exports__);
         title: 'Добавить пользователя',
         url: '/admin/create'
       }, {
-        title: 'Отделы',
-        url: '/admin/departmens'
-      }, {
         title: 'Отчеты',
         url: '/admin/export'
       }],
