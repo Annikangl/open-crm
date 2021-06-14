@@ -33,31 +33,15 @@ Route::resource('user', UsersController::class);
 Route::post('/register', [UsersController::class,"store"]);
 Route::post('/login', [UsersController::class,"login"]);
 
-
-
-// Route::group(['middleware' => ['role:admin']], function () {
-//     Route::get('/test', function(){
-//         return view('test');
-//     });
-// });
-
-
-// Route::get('/test', function(){
-//     return[
-//         "key"=> \Illuminate\Support\Str::random(30),
-//         "port" => 4743,
-//         "api_url"=>"sdsdsdsd"
-//     ];
-// })->middleware('bearer-auth');
-
-
-
 // Route::resource('notarial', NotarialController::class);
 // Route::resource('territorial', TerritorialController::class);
 // Route::resource('justice', JusticeController::class);
 
 Route::resource('userref', UserRef::class);
 Route::resource('references', ReferencesController::class);
+
+Route::get('export', [ReferencesController::class,"referencesExport"]);
+
 Route::resource('podrazdel', PodrazdelController::class);
 Route::resource('measures', MeasuresController::class);
 
