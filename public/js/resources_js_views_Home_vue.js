@@ -274,6 +274,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -474,7 +495,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.app-content[data-v-63cd6604] {\r\n  height: 90vh;\r\n  margin-top: 100px;\n}\n.main-title[data-v-63cd6604] {\r\n  font-weight: 800;\n}\n.left-content p[data-v-63cd6604] {\r\n  font-size: 21px;\n}\n.section__title-form[data-v-63cd6604] {\r\n  font-weight: bold;\r\n  margin-bottom: 30px;\n}\n.secttion__footer[data-v-63cd6604] {\r\n  margin-top: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.app-content[data-v-63cd6604] {\r\n  height: 90vh;\r\n  margin-top: 100px;\n}\n.main-title[data-v-63cd6604],\r\n.contact-title[data-v-63cd6604] {\r\n  font-weight: 800;\n}\n.left-content p[data-v-63cd6604] {\r\n  font-size: 21px;\n}\n.section__title-form[data-v-63cd6604] {\r\n  font-weight: bold;\r\n  margin-bottom: 30px;\n}\n.secttion__footer[data-v-63cd6604] {\r\n  margin-top: 100px;\n}\n.contact-info[data-v-63cd6604] {\r\n  margin-top: 100px;\n}\n.contact-title[data-v-63cd6604] {\r\n  margin-bottom: 50px;\n}\n.contact-info-text span[data-v-63cd6604] {\r\n  font-weight: bold;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13060,16 +13081,20 @@ var render = function() {
       _c("div", { staticClass: "app-content" }, [
         _vm._m(0),
         _vm._v(" "),
+        _c("div", { staticClass: "divider" }),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
         _c(
           "div",
           { ref: "modal", staticClass: "modal", attrs: { id: "modal1" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(1),
+              _vm._m(2),
               _vm._v(" "),
               _c("section", { staticClass: "contact-form" }, [
                 _c("div", { staticClass: "container" }, [
-                  _vm._m(2),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "contact-form__inner" }, [
                     _c("div", { staticClass: "row" }, [
@@ -13582,16 +13607,20 @@ var staticRenderFns = [
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col s8 right-content" }, [
-            _c("img", {
-              attrs: {
-                src: "/assets/img/main-bg.jpg",
-                alt: "main bg",
-                width: "100%",
-                height: ""
-              }
-            })
-          ])
+          _c(
+            "div",
+            { staticClass: "col s8 right-content hide-on-med-and-down" },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/assets/img/second-bg.jpg",
+                  alt: "main bg",
+                  width: "100%",
+                  height: ""
+                }
+              })
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
@@ -13605,6 +13634,54 @@ var staticRenderFns = [
               },
               [_vm._v("\n              Отправить заявку\n            ")]
             )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "contact-info" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col s8" }, [
+            _c("img", {
+              attrs: {
+                src: "/assets/img/main-bg.jpg",
+                alt: "info",
+                width: "100%"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col s4 contact-info-text" }, [
+            _c("h4", { staticClass: "contact-title center-align" }, [
+              _vm._v("Контактная информация")
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _c("span", [_vm._v("Адрес ")]),
+              _vm._v("город Донецк, улица Артема, д. 157, 283048")
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _c("span", [_vm._v("Email ")]),
+              _vm._v("minjust@minjust-dnr.ru")
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _c("span", [_vm._v("График работы: ")]),
+              _vm._v(
+                "Понедельник-четверг с 9:00 до 18:00, пятница с 9:00 до 16:45. \n                  Перерыв с 13:00 до 13:45. Суббота-воскресенье — выходные дни."
+              )
+            ]),
+            _c("br"),
+            _vm._v(" "),
+            _c("span")
           ])
         ])
       ])

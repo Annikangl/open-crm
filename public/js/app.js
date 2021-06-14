@@ -38641,10 +38641,8 @@ var staticRenderFns = [
           ),
           _vm._v(" "),
           _c("ul", { staticClass: "right hide-on-med-and-down" }, [
-            _c("li", [
-              _c("a", { staticClass: "active", attrs: { href: "#" } }, [
-                _vm._v("Главная")
-              ])
+            _c("li", { staticClass: "active" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Главная")])
             ]),
             _vm._v(" "),
             _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Контакты")])])

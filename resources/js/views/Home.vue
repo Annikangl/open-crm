@@ -7,16 +7,15 @@
         <div class="container">
           <div class="row">
             <div class="col s12 center-align">
-              <!-- <h4>В форме ниже оставьте своео обращение</h4> -->
             </div>
             <div class="col s4 left-content">
               <h3 class="main-title">Направление замечаний и предложений</h3>
               <p>Данный раздел на ведомственном сайте создан для направления гражданами замечаний и предложений.</p>
               <p>Нажмите на кнопку "Отправить заявку" и заполните все данные в появившейя форме.</p>
             </div>
-            <div class="col s8 right-content">
+            <div class="col s8 right-content hide-on-med-and-down">
               <img
-                src="/assets/img/main-bg.jpg"
+                src="/assets/img/second-bg.jpg"
                 alt="main bg"
                 width="100%"
                 height=""
@@ -33,6 +32,28 @@
           </div>
         </div>
       </section>
+
+        <div class="divider"></div>
+         <section class="contact-info">
+           <div class="container">
+             <div class="row">
+               
+             </div>
+             <div class="row">
+               <div class="col s8">
+                 <img src="/assets/img/main-bg.jpg" alt="info" width="100%">
+               </div>
+               <div class="col s4 contact-info-text">
+                 <h4 class="contact-title center-align">Контактная информация</h4>
+                 <p><span>Адрес&nbsp;</span>город Донецк, улица Артема, д. 157, 283048</p>
+                 <p><span>Email&nbsp;</span>minjust@minjust-dnr.ru</p>
+                 <p><span>График работы:&nbsp;</span>Понедельник-четверг с 9:00 до 18:00, пятница с 9:00 до 16:45. 
+                    Перерыв с 13:00 до 13:45. Суббота-воскресенье — выходные дни.</p><br>
+                 <span></span>
+               </div>
+             </div>
+           </div>
+         </section>
 
       <!-- Модальное окно с формой -->
       <div id="modal1" class="modal" ref="modal">
@@ -382,7 +403,8 @@ export default {
   margin-top: 100px;
 }
 
-.main-title {
+.main-title,
+.contact-title {
   font-weight: 800;
 }
 
@@ -397,5 +419,18 @@ export default {
 
 .secttion__footer {
   margin-top: 100px;
+}
+
+
+.contact-info {
+  margin-top: 100px;
+}
+
+.contact-title {
+  margin-bottom: 50px;
+}
+
+.contact-info-text span {
+  font-weight: bold;
 }
 </style>
